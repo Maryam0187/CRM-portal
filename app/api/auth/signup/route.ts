@@ -10,11 +10,26 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, password, firstName, lastName } = body;
+    const { 
+      email, 
+      password, 
+      firstName, 
+      lastName,
+      businessName,
+      enableBookings = true,
+      enableSales = false
+    } = body;
 
-    if (!email || !password || !firstName || !lastName) {
+    if (!email || !password || !firstName || !lastName || !businessName) {
       return NextResponse.json(
         { error: 'All fields are required' },
+        { status: 400 }
+      );
+    }
+
+    if (!enableBookings && !enableSales) {
+      return NextResponse.json(
+        { error: 'At least one module must be enabled' },
         { status: 400 }
       );
     }
@@ -27,13 +42,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create temporary business (will be completed in onboarding)
+    // Create business with selected modules
     const business = await Business.create({
-      name: `${firstName}'s Business`,
+      name: businessName,
       slug: `temp-${Date.now()}`,
       category: BusinessCategory.SALON,
-      location: 'Dubai',
-      currency: 'AED',
+      location: 'Global',
+      currency: 'USD',
+      enableBookings,
+      enableSales,
     });
 
     const hashedPassword = await hashPassword(password);
@@ -72,7 +89,13 @@ export async function POST(req: NextRequest) {
         role: user.role,
         businessId: user.businessId,
       },
-      needsOnboarding: true,
+      business: {
+        id: business.id,
+        name: business.name,
+        enableBookings,
+        enableSales,
+      },
+      needsOnboarding: enableBookings,
     }, { status: 201 });
 
     response.headers.set('Set-Cookie', cookieStr);

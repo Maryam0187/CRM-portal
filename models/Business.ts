@@ -29,6 +29,8 @@ interface BusinessAttributes {
   phone?: string;
   email?: string;
   currency: string;
+  enableBookings: boolean;
+  enableSales: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -46,6 +48,8 @@ class Business extends Model<BusinessAttributes, BusinessCreationAttributes>
   public phone?: string;
   public email?: string;
   public currency!: string;
+  public enableBookings!: boolean;
+  public enableSales!: boolean;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -89,7 +93,17 @@ Business.init(
     currency: {
       type: DataTypes.STRING(3),
       allowNull: false,
-      defaultValue: 'AED',
+      defaultValue: 'USD',
+    },
+    enableBookings: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    enableSales: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   },
   {

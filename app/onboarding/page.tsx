@@ -1,8 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { CATEGORY_SERVICES } from '@/lib/helpers';
+
+function OnboardingContent() {
+  const searchParams = useSearchParams();
+  const isOptional = searchParams?.get('mode') === 'optional';
+  const router = useRouter();
+  // ... rest will be wrapped
 
 const CATEGORIES = [
   { id: 'salon', label: 'Salon', icon: '💇' },
@@ -22,9 +29,7 @@ const CATEGORIES = [
   { id: 'food_tour', label: 'Food Tour', icon: '🍽️' },
 ];
 
-export default function OnboardingPage() {
-  const router = useRouter();
-  const [step, setStep] = useState(1);
+const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<any>({
     businessName: '',
@@ -69,8 +74,15 @@ export default function OnboardingPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
       <div className="max-w-4xl mx-auto pt-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2">Set up your business</h1>
-          <p className="text-gray-600">Step {step} of 5</p>
+          <h1 className="text-4xl font-bold mb-2">Set Up Your Website & Booking Page</h1>
+          <p className="text-gray-600">Step {step} of 5 • Takes about 2 minutes</p>
+          {isOptional && (
+            <div className="mt-4">
+              <Link href="/sales/dashboard" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Skip this and go to Sales Management →
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="card max-w-2xl mx-auto">
@@ -188,5 +200,13 @@ export default function OnboardingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <OnboardingContent />
+    </Suspense>
   );
 }
