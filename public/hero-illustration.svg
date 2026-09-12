@@ -1,0 +1,169 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#gradient1)"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0" y1="0" x2="800" y2="600">
+      <stop offset="0%" stop-color="#EEF2FF"/>
+      <stop offset="100%" stop-color="#F5F3FF"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0" y1="0" x2="100" y2="100">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0" y1="0" x2="100" y2="100">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="shadow1">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.1"/>
+    </filter>
+    <filter id="shadow2">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Main Dashboard Card -->
+  <g filter="url(#shadow1)">
+    <rect x="100" y="80" width="600" height="440" rx="16" fill="white"/>
+  </g>
+  
+  <!-- Top Navigation Bar -->
+  <rect x="100" y="80" width="600" height="60" rx="16" ry="16" fill="url(#gradient2)"/>
+  <rect x="100" y="124" width="600" height="16" fill="url(#gradient2)"/>
+  
+  <!-- Nav Elements -->
+  <circle cx="130" cy="110" r="12" fill="white" fill-opacity="0.3"/>
+  <rect x="155" y="104" width="80" height="12" rx="6" fill="white" fill-opacity="0.9"/>
+  <rect x="250" y="104" width="80" height="12" rx="6" fill="white" fill-opacity="0.6"/>
+  <rect x="345" y="104" width="80" height="12" rx="6" fill="white" fill-opacity="0.6"/>
+  
+  <!-- Avatar & Profile -->
+  <circle cx="660" cy="110" r="16" fill="white" fill-opacity="0.9"/>
+  
+  <!-- Left Panel - Booking Calendar -->
+  <g>
+    <rect x="120" y="160" width="260" height="340" rx="8" fill="#F9FAFB"/>
+    
+    <!-- Calendar Header -->
+    <rect x="130" y="170" width="240" height="40" rx="6" fill="white" filter="url(#shadow2)"/>
+    <rect x="145" y="182" width="100" height="16" rx="4" fill="#3B82F6" fill-opacity="0.2"/>
+    <rect x="320" y="182" width="30" height="16" rx="4" fill="#3B82F6"/>
+    
+    <!-- Calendar Grid -->
+    <g>
+      <rect x="130" y="225" width="240" height="30" rx="4" fill="#EEF2FF"/>
+      <!-- Days of week -->
+      <rect x="140" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="175" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="210" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="245" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="280" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="315" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      <rect x="350" y="233" width="20" height="14" rx="3" fill="#6366F1" fill-opacity="0.3"/>
+      
+      <!-- Calendar dates -->
+      <rect x="140" y="265" width="30" height="28" rx="6" fill="white"/>
+      <rect x="180" y="265" width="30" height="28" rx="6" fill="white"/>
+      <rect x="220" y="265" width="30" height="28" rx="6" fill="url(#gradient2)"/>
+      <rect x="260" y="265" width="30" height="28" rx="6" fill="white"/>
+      <rect x="300" y="265" width="30" height="28" rx="6" fill="white"/>
+      <rect x="340" y="265" width="30" height="28" rx="6" fill="white"/>
+      
+      <rect x="140" y="303" width="30" height="28" rx="6" fill="white"/>
+      <rect x="180" y="303" width="30" height="28" rx="6" fill="white"/>
+      <rect x="220" y="303" width="30" height="28" rx="6" fill="white"/>
+      <rect x="260" y="303" width="30" height="28" rx="6" fill="#3B82F6" fill-opacity="0.1"/>
+      <rect x="300" y="303" width="30" height="28" rx="6" fill="white"/>
+      <rect x="340" y="303" width="30" height="28" rx="6" fill="white"/>
+    </g>
+    
+    <!-- Booking List -->
+    <g>
+      <rect x="140" y="350" width="220" height="36" rx="8" fill="white" filter="url(#shadow2)"/>
+      <circle cx="155" cy="368" r="8" fill="#3B82F6"/>
+      <rect x="175" y="360" width="120" height="8" rx="4" fill="#1F2937" fill-opacity="0.8"/>
+      <rect x="175" y="372" width="80" height="6" rx="3" fill="#6B7280"/>
+      
+      <rect x="140" y="395" width="220" height="36" rx="8" fill="white" filter="url(#shadow2)"/>
+      <circle cx="155" cy="413" r="8" fill="#8B5CF6"/>
+      <rect x="175" y="405" width="100" height="8" rx="4" fill="#1F2937" fill-opacity="0.8"/>
+      <rect x="175" y="417" width="90" height="6" rx="3" fill="#6B7280"/>
+      
+      <rect x="140" y="440" width="220" height="36" rx="8" fill="white" filter="url(#shadow2)"/>
+      <circle cx="155" cy="458" r="8" fill="#EC4899"/>
+      <rect x="175" y="450" width="110" height="8" rx="4" fill="#1F2937" fill-opacity="0.8"/>
+      <rect x="175" y="462" width="70" height="6" rx="3" fill="#6B7280"/>
+    </g>
+  </g>
+  
+  <!-- Right Panel - Sales Pipeline -->
+  <g>
+    <rect x="400" y="160" width="280" height="340" rx="8" fill="#F9FAFB"/>
+    
+    <!-- Pipeline Header -->
+    <rect x="410" y="170" width="260" height="40" rx="6" fill="white" filter="url(#shadow2)"/>
+    <rect x="425" y="182" width="140" height="16" rx="4" fill="url(#gradient3)" fill-opacity="0.2"/>
+    
+    <!-- Pipeline Columns -->
+    <g>
+      <!-- Column 1: New -->
+      <rect x="410" y="225" width="75" height="260" rx="8" fill="#DBEAFE"/>
+      <rect x="418" y="233" width="59" height="20" rx="4" fill="#3B82F6" fill-opacity="0.9"/>
+      
+      <rect x="418" y="263" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="425" y="271" width="45" height="6" rx="3" fill="#1F2937"/>
+      <rect x="425" y="281" width="35" height="4" rx="2" fill="#6B7280"/>
+      <rect x="425" y="293" width="28" height="10" rx="5" fill="#10B981" fill-opacity="0.2"/>
+      
+      <rect x="418" y="321" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="425" y="329" width="45" height="6" rx="3" fill="#1F2937"/>
+      <rect x="425" y="339" width="30" height="4" rx="2" fill="#6B7280"/>
+      <rect x="425" y="351" width="32" height="10" rx="5" fill="#F59E0B" fill-opacity="0.2"/>
+      
+      <!-- Column 2: Qualified -->
+      <rect x="495" y="225" width="75" height="260" rx="8" fill="#E9D5FF"/>
+      <rect x="503" y="233" width="59" height="20" rx="4" fill="#8B5CF6" fill-opacity="0.9"/>
+      
+      <rect x="503" y="263" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="510" y="271" width="45" height="6" rx="3" fill="#1F2937"/>
+      <rect x="510" y="281" width="38" height="4" rx="2" fill="#6B7280"/>
+      <rect x="510" y="293" width="30" height="10" rx="5" fill="#3B82F6" fill-opacity="0.2"/>
+      
+      <rect x="503" y="321" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="510" y="329" width="40" height="6" rx="3" fill="#1F2937"/>
+      <rect x="510" y="339" width="35" height="4" rx="2" fill="#6B7280"/>
+      <rect x="510" y="351" width="34" height="10" rx="5" fill="#8B5CF6" fill-opacity="0.2"/>
+      
+      <rect x="503" y="379" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="510" y="387" width="42" height="6" rx="3" fill="#1F2937"/>
+      <rect x="510" y="397" width="32" height="4" rx="2" fill="#6B7280"/>
+      <rect x="510" y="409" width="28" height="10" rx="5" fill="#EC4899" fill-opacity="0.2"/>
+      
+      <!-- Column 3: Won -->
+      <rect x="580" y="225" width="75" height="260" rx="8" fill="#D1FAE5"/>
+      <rect x="588" y="233" width="59" height="20" rx="4" fill="#10B981" fill-opacity="0.9"/>
+      
+      <rect x="588" y="263" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="595" y="271" width="45" height="6" rx="3" fill="#1F2937"/>
+      <rect x="595" y="281" width="40" height="4" rx="2" fill="#6B7280"/>
+      <rect x="595" y="293" width="36" height="10" rx="5" fill="#10B981" fill-opacity="0.3"/>
+      
+      <rect x="588" y="321" width="59" height="48" rx="6" fill="white" filter="url(#shadow2)"/>
+      <rect x="595" y="329" width="42" height="6" rx="3" fill="#1F2937"/>
+      <rect x="595" y="339" width="35" height="4" rx="2" fill="#6B7280"/>
+      <rect x="595" y="351" width="32" height="10" rx="5" fill="#10B981" fill-opacity="0.3"/>
+    </g>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="720" cy="120" r="40" fill="#3B82F6" fill-opacity="0.1"/>
+  <circle cx="80" cy="480" r="50" fill="#8B5CF6" fill-opacity="0.1"/>
+  <circle cx="750" cy="550" r="35" fill="#EC4899" fill-opacity="0.1"/>
+  
+  <!-- Floating accent dots -->
+  <circle cx="90" cy="100" r="6" fill="#3B82F6" fill-opacity="0.4"/>
+  <circle cx="730" cy="470" r="8" fill="#8B5CF6" fill-opacity="0.4"/>
+  <circle cx="110" cy="530" r="5" fill="#EC4899" fill-opacity="0.4"/>
+</svg>

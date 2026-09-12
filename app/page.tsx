@@ -111,45 +111,18 @@ function HomePageContent() {
               </div>
             </AnimatedSection>
 
-            {/* Hero Visual - Product UI Mock */}
+            {/* Hero Visual - Premium Illustration */}
             <AnimatedSection delay={300}>
               <div className="relative group">
-                <div className="relative z-10 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-3xl">
-                  {/* Mock Booking Page */}
-                  <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 transition-colors duration-300">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full" />
-                      <div>
-                        <div className="h-3 w-32 bg-gray-300 dark:bg-gray-600 rounded" />
-                        <div className="h-2 w-24 bg-gray-200 dark:bg-gray-700 rounded mt-1" />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="bg-white dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 transition-all duration-200 hover:scale-105 hover:shadow-md">
-                          <div className="h-3 w-20 bg-gray-300 dark:bg-gray-500 rounded mb-2" />
-                          <div className="h-2 w-16 bg-gray-200 dark:bg-gray-600 rounded" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Mock Sales Board */}
-                  <div className="p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
-                    <div className="flex gap-3 mb-4">
-                      <div className="h-8 w-20 bg-blue-100 dark:bg-blue-900/50 rounded" />
-                      <div className="h-8 w-20 bg-purple-100 dark:bg-purple-900/50 rounded" />
-                      <div className="h-8 w-20 bg-green-100 dark:bg-green-900/50 rounded" />
-                    </div>
-                    <div className="space-y-3">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border border-gray-200 dark:border-gray-600 transition-all duration-200 hover:scale-105">
-                          <div className="h-3 w-full bg-gray-300 dark:bg-gray-500 rounded mb-2" />
-                          <div className="h-2 w-3/4 bg-gray-200 dark:bg-gray-600 rounded" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                <div className="relative z-10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-[1.02]">
+                  <img 
+                    src="/hero-illustration.svg" 
+                    alt="Business dashboard showing booking calendar and sales pipeline" 
+                    className="w-full h-auto dark:opacity-90 dark:brightness-95 transition-all duration-300"
+                    loading="eager"
+                    width={800}
+                    height={600}
+                  />
                 </div>
                 
                 {/* Floating elements */}
