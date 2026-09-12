@@ -82,10 +82,10 @@ export default function SignupPage() {
             BusinessOS
           </Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-4">
-            {step === 1 ? 'Create Your Account' : 'Choose Your Modules'}
+            {step === 1 ? 'Create Your Account' : 'Set Up Your Business'}
           </h1>
           <p className="text-gray-600 mt-2">
-            {step === 1 ? 'Start your business in one minute' : 'What would you like to set up?'}
+            {step === 1 ? 'Launch your website in one minute' : 'Name your business and get started'}
           </p>
         </div>
 
@@ -194,10 +194,10 @@ export default function SignupPage() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-medium text-gray-700 mb-3">Select Modules *</p>
-                  <div className="space-y-3">
+                  <p className="text-sm font-medium text-gray-700 mb-3">What would you like to set up? *</p>
+                  <div className="space-y-4">
                     <label className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                      formData.enableBookings ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+                      formData.enableBookings ? 'border-blue-500 bg-blue-50' : 'border-blue-200 bg-blue-50/30 hover:border-blue-300'
                     }`}>
                       <input
                         type="checkbox"
@@ -206,30 +206,37 @@ export default function SignupPage() {
                         className="mt-1 mr-3"
                       />
                       <div className="flex-1">
-                        <div className="font-medium text-gray-900">🌐 Website & Orders</div>
-                        <div className="text-sm text-gray-600">
-                          Create a booking page for appointments, orders, or services
+                        <div className="flex items-center gap-2">
+                          <div className="font-medium text-gray-900">🌐 Website & Orders</div>
+                          <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">Recommended</span>
+                        </div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          Launch your booking site with built-in sales tools
                         </div>
                       </div>
                     </label>
 
-                    <label className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                      formData.enableSales ? 'border-purple-500 bg-purple-50' : 'border-gray-200 hover:border-gray-300'
-                    }`}>
-                      <input
-                        type="checkbox"
-                        checked={formData.enableSales}
-                        onChange={(e) => setFormData({ ...formData, enableSales: e.target.checked })}
-                        className="mt-1 mr-3"
-                      />
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">💼 Sales Management</div>
-                        <div className="text-sm text-gray-600">
-                          Manage leads, pipeline, deals, and close more sales
+                    <div className="border-t pt-3">
+                      <p className="text-xs text-gray-500 mb-2">Or if you only need sales tools:</p>
+                      <label className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        formData.enableSales ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+                      }`}>
+                        <input
+                          type="checkbox"
+                          checked={formData.enableSales}
+                          onChange={(e) => setFormData({ ...formData, enableSales: e.target.checked })}
+                          className="mt-1 mr-3"
+                        />
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-900">💼 Sales Management Only</div>
+                          <div className="text-sm text-gray-600 mt-1">
+                            Track leads, deals, and pipeline without a booking site
+                          </div>
                         </div>
-                      </div>
-                    </label>
+                      </label>
+                    </div>
                   </div>
+                  <p className="text-xs text-gray-500 mt-3">You can enable both modules if needed</p>
                 </div>
 
                 {error && <div className="text-red-600 text-sm">{error}</div>}

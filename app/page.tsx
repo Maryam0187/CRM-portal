@@ -65,7 +65,7 @@ function HomePageContent() {
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight mb-6 leading-[1.1] transition-colors duration-300">
-                Start your business
+                Launch your website
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   in one minute
@@ -73,8 +73,8 @@ function HomePageContent() {
               </h1>
               
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-xl transition-colors duration-300">
-                Everything you need to go live: a beautiful website to take orders, 
-                powerful sales tools to close deals. Choose one or use both.
+                Get your business online instantly. Take bookings, accept orders, and manage 
+                customers—all with built-in sales tools to grow your revenue.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -155,101 +155,118 @@ function HomePageContent() {
         </section>
       </AnimatedSection>
 
-      {/* Two Product Paths */}
+      {/* Main Product Overview */}
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight transition-colors duration-300">
-              Two powerful products.<br />One platform.
+              Everything you need to run your business
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
-              Use them separately or together. Everything works seamlessly.
+              Accept bookings and orders from your custom page, plus built-in sales tools to manage leads and close deals.
             </p>
           </AnimatedSection>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {[
-              {
-                icon: '🌐',
-                title: 'Website & Orders',
-                desc: 'Your business online in 60 seconds. Accept bookings, appointments, or orders from a beautiful custom page.',
-                features: [
-                  'Live booking page with your branding',
-                  'Service catalog with pricing',
-                  'Automatic scheduling & calendar sync',
-                  'Customer notifications & reminders',
-                  'Payment tracking & invoicing'
-                ],
-                tag: 'Salons • Studios • Consultants • Home Services • Tutors',
-                gradient: 'from-blue-600 to-blue-400',
-                hover: 'group-hover:from-blue-50 group-hover:to-transparent dark:group-hover:from-blue-950/30'
-              },
-              {
-                icon: '💼',
-                title: 'Sales Management',
-                desc: 'Complete CRM to track every deal. Use standalone or connect with your booking site.',
-                features: [
-                  'Visual pipeline with drag-and-drop',
-                  'Lead capture & qualification',
-                  'Contact & company management',
-                  'Task automation & reminders',
-                  'Revenue forecasting & analytics'
-                ],
-                tag: 'B2B Sales • Agencies • Consultancies • Professional Services',
-                gradient: 'from-purple-600 to-purple-400',
-                hover: 'group-hover:from-purple-50 group-hover:to-transparent dark:group-hover:from-purple-950/30'
-              }
-            ].map((product, i) => (
-              <AnimatedSection key={i} delay={i * 100}>
-                <div className="group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-500 hover:scale-[1.02]">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${product.hover} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
-                  <div className="relative">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${product.gradient} rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      {product.icon}
+          {/* Main Product Card */}
+          <AnimatedSection delay={100}>
+            <div className="group relative bg-white dark:bg-gray-800 rounded-2xl border-2 border-blue-200 dark:border-blue-800 p-10 hover:shadow-2xl hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-500 hover:scale-[1.01] mb-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent dark:from-blue-950/30 opacity-50 rounded-2xl" />
+              <div className="relative">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-xs font-semibold rounded-full mb-4">
+                      MAIN PLATFORM
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 transition-colors">
-                      {product.title}
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3 transition-colors">
+                      Website & Orders
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed transition-colors">
-                      {product.desc}
+                    <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed transition-colors max-w-2xl">
+                      Your business online in 60 seconds. Accept bookings, appointments, or orders from a beautiful custom page—with complete sales management built right in.
                     </p>
-                    <ul className="space-y-3 mb-8">
-                      {product.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300 transition-colors">
-                          <svg className={`w-5 h-5 ${i === 0 ? 'text-blue-600 dark:text-blue-400' : 'text-purple-600 dark:text-purple-400'} mt-0.5 flex-shrink-0`} fill="currentColor" viewBox="0 0 20 20">
+                  </div>
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center text-white text-4xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    🌐
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <span className="w-5 h-5 bg-blue-100 dark:bg-blue-900/50 rounded flex items-center justify-center text-blue-600 dark:text-blue-400 text-xs">✓</span>
+                      Customer-Facing
+                    </h4>
+                    <ul className="space-y-2">
+                      {[
+                        'Live booking page with your branding',
+                        'Service catalog with pricing',
+                        'Automatic scheduling & calendar sync',
+                        'Customer notifications & reminders',
+                        'Payment tracking & invoicing'
+                      ].map((feature, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                          <svg className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
                           {feature}
                         </li>
                       ))}
                     </ul>
-                    <div className="text-xs text-gray-500 dark:text-gray-500 font-medium transition-colors">
-                      PERFECT FOR: {product.tag}
-                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <span className="w-5 h-5 bg-purple-100 dark:bg-purple-900/50 rounded flex items-center justify-center text-purple-600 dark:text-purple-400 text-xs">✓</span>
+                      Built-In Sales Tools
+                    </h4>
+                    <ul className="space-y-2">
+                      {[
+                        'Visual sales pipeline & deal tracking',
+                        'Lead capture & qualification',
+                        'Contact & company management',
+                        'Task automation & follow-up reminders',
+                        'Revenue forecasting & analytics'
+                      ].map((feature, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 transition-colors">
+                          <svg className="w-4 h-4 text-purple-600 dark:text-purple-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
 
-          {/* Combined offer */}
+                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-xs text-gray-500 dark:text-gray-500 font-medium mb-3">PERFECT FOR</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Salons • Studios • Consultants • Coaches • Home Services • Tutors • Photographers • Wellness • Local Businesses
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Sales-Only Option (Secondary) */}
           <AnimatedSection delay={200}>
-            <div className="mt-8 p-8 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl text-white text-center transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-              <div className="text-3xl mb-3 animate-pulse">⚡</div>
-              <h4 className="text-2xl font-bold mb-3">Use both together</h4>
-              <p className="text-gray-300 dark:text-gray-400 max-w-2xl mx-auto mb-6">
-                Run your customer bookings <strong>and</strong> manage B2B pipeline 
-                in one place. Perfect for businesses that do both.
-              </p>
-              <Link 
-                href="/signup" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-xl hover:scale-105"
-              >
-                Start with both modules
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+            <div className="p-8 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300">
+              <div className="max-w-3xl mx-auto text-center">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Need sales tools only?
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  If you don't need a booking site and only want our sales management tools (pipeline, leads, contacts, tasks), 
+                  you can use <span className="font-medium text-gray-900 dark:text-white">Sales Management standalone</span>.
+                </p>
+                <Link 
+                  href="/signup" 
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  Learn about sales-only mode
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </AnimatedSection>
         </div>
@@ -276,9 +293,9 @@ function HomePageContent() {
 
             <div className="grid md:grid-cols-3 gap-12">
               {[
-                { step: '1', title: 'Sign up', description: 'Create your account and tell us what you do. Takes 20 seconds.', icon: '✨', time: '20s' },
-                { step: '2', title: 'Choose modules', description: 'Pick Website & Orders, Sales Management, or both. Your choice.', icon: '🎯', time: '10s' },
-                { step: '3', title: "You're live", description: 'Start taking orders or managing deals immediately. No setup required.', icon: '🚀', time: '30s' }
+                { step: '1', title: 'Sign up', description: 'Create your account in seconds. No credit card required.', icon: '✨', time: '20s' },
+                { step: '2', title: 'Set up your site', description: 'Tell us what you do and customize your booking page. Sales tools included automatically.', icon: '🎯', time: '20s' },
+                { step: '3', title: "You're live", description: 'Share your link and start taking orders. Manage everything from your dashboard.', icon: '🚀', time: '20s' }
               ].map((item, i) => (
                 <AnimatedSection key={i} delay={i * 100}>
                   <div className="relative group">
