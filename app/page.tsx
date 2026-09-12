@@ -28,6 +28,9 @@ function HomePageContent() {
               />
             </Link>
             <div className="flex items-center gap-4">
+              <Link href="/pricing" className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                Pricing
+              </Link>
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105"
@@ -606,6 +609,7 @@ function HomePageContent() {
               </a>
             </div>
             <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+              <Link href="/pricing" className="hover:text-gray-900 dark:hover:text-white transition-all duration-200 hover:scale-110">Pricing</Link>
               <Link href="/login" className="hover:text-gray-900 dark:hover:text-white transition-all duration-200 hover:scale-110">Login</Link>
               <Link href="/signup" className="hover:text-gray-900 dark:hover:text-white transition-all duration-200 hover:scale-110">Sign up</Link>
             </div>

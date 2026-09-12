@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function SignupPage() {
+function SignupContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -13,11 +14,19 @@ export default function SignupPage() {
     email: '',
     password: '',
     businessName: '',
+    plan: 'free',
     enableBookings: false,
     enableSales: false,
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const plan = searchParams.get('plan');
+    if (plan && ['free', 'growth', 'business'].includes(plan)) {
+      setFormData(prev => ({ ...prev, plan }));
+    }
+  }, [searchParams]);
 
   const handleNext = () => {
     if (!formData.firstName || !formData.email || !formData.password) {
@@ -271,5 +280,13 @@ export default function SignupPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">Loading...</div>}>
+      <SignupContent />
+    </Suspense>
   );
 }

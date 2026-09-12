@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
       firstName, 
       lastName,
       businessName,
+      plan = 'free',
       enableBookings = true,
       enableSales = false
     } = body;
@@ -49,6 +50,7 @@ export async function POST(req: NextRequest) {
       category: BusinessCategory.SALON,
       location: 'Global',
       currency: 'USD',
+      plan: plan || 'free',
       enableBookings,
       enableSales,
     });
