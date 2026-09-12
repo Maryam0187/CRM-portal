@@ -241,6 +241,39 @@ npx sequelize-cli db:seed:all
 ✅ Multi-tenant with strong isolation  
 ✅ Build passes with all modules working  
 
+## Troubleshooting
+
+### Seeder Error: Cannot find module 'bcrypt'
+
+If you see this error when running `npx sequelize-cli db:seed:all`:
+```
+ERROR: Cannot find module 'bcrypt'
+```
+
+**Solution:** This is already fixed in the latest version. The project uses `bcryptjs` (not `bcrypt`) to avoid native compilation issues. To recover:
+
+```bash
+# Pull latest changes
+git pull origin main
+
+# Reinstall dependencies
+npm install
+
+# Run migrations and seeders
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+```
+
+The project uses `bcryptjs` for better cross-platform compatibility.
+
+### Build Issues
+
+If `npm run build` fails, ensure:
+- Node.js 18+ is installed
+- All dependencies are installed: `npm install`
+- Environment variables are set in `.env`
+- MySQL is running: `docker-compose up -d`
+
 ## License
 
 MIT
