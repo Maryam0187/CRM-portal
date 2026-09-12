@@ -304,7 +304,194 @@ module.exports = {
     ]);
   },
 
+    // ===== SALES CRM MODULE DATA =====
+    // Add deal stages for both businesses
+    await queryInterface.bulkInsert('deal_stages', [
+      {
+        businessId: businessId1,
+        name: 'New',
+        order: 1,
+        color: '#3B82F6',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId1,
+        name: 'Qualified',
+        order: 2,
+        color: '#10B981',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId1,
+        name: 'Proposal',
+        order: 3,
+        color: '#F59E0B',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId1,
+        name: 'Won',
+        order: 4,
+        color: '#059669',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId1,
+        name: 'Lost',
+        order: 5,
+        color: '#EF4444',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    // Add contacts for CRM
+    await queryInterface.bulkInsert('contacts', [
+      {
+        businessId: businessId1,
+        firstName: 'Luxury',
+        lastName: 'Hotel Manager',
+        email: 'manager@luxuryhotel.ae',
+        phone: '+971 50 888 9999',
+        company: 'Luxury Hotel Dubai',
+        title: 'Operations Manager',
+        notes: 'Corporate client for staff beauty services',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId2,
+        firstName: 'Property',
+        lastName: 'Manager',
+        email: 'pm@dubaiproperties.ae',
+        phone: '+971 50 777 8888',
+        company: 'Dubai Properties',
+        title: 'Property Manager',
+        notes: 'Manages 50+ villas, recurring cleaning contracts',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    // Add leads
+    await queryInterface.bulkInsert('leads', [
+      {
+        businessId: businessId1,
+        ownerId: 1,
+        firstName: 'Sarah',
+        lastName: 'Wedding',
+        email: 'sarah@weddingplanner.ae',
+        phone: '+971 50 555 6666',
+        company: 'Perfect Weddings',
+        title: 'Wedding Planner',
+        status: 'qualified',
+        source: 'Referral',
+        notes: 'Needs salon services for 10 brides - bulk booking',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId2,
+        ownerId: 2,
+        firstName: 'Ahmed',
+        lastName: 'Building',
+        email: 'ahmed@construction.ae',
+        phone: '+971 50 444 5555',
+        company: 'Dubai Construction',
+        title: 'Site Manager',
+        status: 'contacted',
+        source: 'Website',
+        notes: 'Post-construction deep cleaning for new buildings',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    // Add deals
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + 30);
+
+    await queryInterface.bulkInsert('deals', [
+      {
+        businessId: businessId1,
+        stageId: 2,
+        ownerId: 1,
+        contactId: 1,
+        name: 'Luxury Hotel Monthly Contract',
+        value: 5000.00,
+        expectedCloseDate: futureDate,
+        notes: 'Monthly beauty services for hotel spa staff',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId2,
+        stageId: 3,
+        ownerId: 2,
+        contactId: 2,
+        name: 'Dubai Properties Cleaning Contract',
+        value: 15000.00,
+        expectedCloseDate: futureDate,
+        notes: '50 villas monthly cleaning - bulk contract',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    // Add tasks
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    await queryInterface.bulkInsert('tasks', [
+      {
+        businessId: businessId1,
+        assignedToId: 1,
+        leadId: 1,
+        title: 'Follow up with Wedding Planner',
+        description: 'Send proposal for bulk bridal packages',
+        status: 'todo',
+        priority: 'high',
+        dueDate: tomorrow,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId1,
+        assignedToId: 1,
+        dealId: 1,
+        title: 'Prepare Hotel Contract',
+        description: 'Draft monthly service agreement',
+        status: 'in_progress',
+        priority: 'high',
+        dueDate: tomorrow,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        businessId: businessId2,
+        assignedToId: 2,
+        dealId: 2,
+        title: 'Site visit Dubai Properties',
+        description: 'Inspect villas and provide quote',
+        status: 'todo',
+        priority: 'medium',
+        dueDate: tomorrow,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+  },
+
   down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('tasks', null, {});
+    await queryInterface.bulkDelete('deals', null, {});
+    await queryInterface.bulkDelete('deal_stages', null, {});
+    await queryInterface.bulkDelete('leads', null, {});
+    await queryInterface.bulkDelete('contacts', null, {});
     await queryInterface.bulkDelete('bookings', null, {});
     await queryInterface.bulkDelete('working_hours', null, {});
     await queryInterface.bulkDelete('staff', null, {});
