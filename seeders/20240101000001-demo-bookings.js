@@ -6,8 +6,8 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const hashedPassword = await bcrypt.hash('password123', 10);
 
-    // Create demo businesses
-    const [salonId] = await queryInterface.bulkInsert('businesses', [
+    // Create demo businesses (MySQL bulkInsert returns insertId, not rows)
+    const businessId1 = await queryInterface.bulkInsert('businesses', [
       {
         name: 'Elite Beauty Salon',
         slug: 'elite-beauty-salon',
@@ -20,9 +20,9 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ], { returning: true });
+    ]);
 
-    const [cleanerId] = await queryInterface.bulkInsert('businesses', [
+    const businessId2 = await queryInterface.bulkInsert('businesses', [
       {
         name: 'SparkleClean Home Services',
         slug: 'sparkleclean-home',
@@ -35,10 +35,19 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ], { returning: true });
+    ]);
 
-    const businessId1 = salonId || 1;
-    const businessId2 = cleanerId || 2;
+    // Match onboarding: `${slug}-${business.id}` so README URLs work
+    await queryInterface.bulkUpdate(
+      'businesses',
+      { slug: `elite-beauty-salon-${businessId1}` },
+      { id: businessId1 }
+    );
+    await queryInterface.bulkUpdate(
+      'businesses',
+      { slug: `sparkleclean-home-${businessId2}` },
+      { id: businessId2 }
+    );
 
     // Create users (owners)
     await queryInterface.bulkInsert('users', [
@@ -241,10 +250,18 @@ module.exports = {
       updatedAt: new Date(),
     })));
 
-    // Create sample bookings
+    // Create sample bookings (local YYYY-MM-DD, not UTC via toISOString)
+    const formatLocalDate = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
+    const todayStr = formatLocalDate(today);
+    const tomorrowStr = formatLocalDate(tomorrow);
 
     await queryInterface.bulkInsert('bookings', [
       {
@@ -254,7 +271,7 @@ module.exports = {
         customerName: 'Fatima Hassan',
         customerEmail: 'fatima@example.com',
         customerPhone: '+971 50 111 2222',
-        bookingDate: today.toISOString().split('T')[0],
+        bookingDate: todayStr,
         startTime: '14:00',
         endTime: '14:45',
         status: 'confirmed',
@@ -272,7 +289,7 @@ module.exports = {
         customerName: 'Aisha Al Maktoum',
         customerEmail: 'aisha@example.com',
         customerPhone: '+971 50 222 3333',
-        bookingDate: tomorrow.toISOString().split('T')[0],
+        bookingDate: tomorrowStr,
         startTime: '11:00',
         endTime: '13:00',
         status: 'confirmed',
@@ -290,7 +307,7 @@ module.exports = {
         customerName: 'John Smith',
         customerEmail: 'john@example.com',
         customerPhone: '+971 50 333 4444',
-        bookingDate: today.toISOString().split('T')[0],
+        bookingDate: todayStr,
         startTime: '10:00',
         endTime: '12:00',
         status: 'confirmed',
