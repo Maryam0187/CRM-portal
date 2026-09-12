@@ -45,9 +45,15 @@ export default function UnifiedNav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-blue-600">
-              {user?.business?.name || 'Platform'}
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard">
+                <img src="/businessos-logo.svg" alt="Business OS" className="h-8" />
+              </Link>
+              <span className="text-gray-300">|</span>
+              <span className="text-lg font-semibold text-gray-900">
+                {user?.business?.name || 'Dashboard'}
+              </span>
+            </div>
             
             <div className="flex space-x-2 bg-gray-100 rounded-lg p-1">
               <Link

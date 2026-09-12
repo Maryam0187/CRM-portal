@@ -2,8 +2,11 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Booking SaaS - Dubai Business Opportunities',
-  description: 'Create your booking page in minutes and start accepting bookings',
+  title: 'Business OS - Technonaire',
+  description: 'Launch your business in 60 seconds. Website, bookings, and sales management by Technonaire.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

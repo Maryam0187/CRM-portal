@@ -1,29 +1,31 @@
-# BusinessOS
+# Business OS
 
 **Start Your Business in One Minute.**
 
-A global multi-tenant SaaS platform for entrepreneurs. Get a beautiful website to take orders, manage your sales pipeline, or do both. Works for any business, anywhere.
+A [Technonaire](https://technonaire.com/) product.
+
+Business OS is a global multi-tenant SaaS platform for entrepreneurs. Get a beautiful website to take orders, manage your sales pipeline, or do both. Works for any business, anywhere.
 
 ## What You Can Do
 
-### 🌐 My Business Module
-Launch your business online instantly:
+### 🌐 My Business (Main Module)
+**Your complete business platform** - Launch your business online instantly:
 - Get a custom booking/ordering page live in 60 seconds
 - Accept appointments, bookings, or simple product orders 24/7
 - Manage services, schedules, staff, and pricing
 - Track customer orders and payments
-- Built-in sales tools included (pipeline, leads, contacts, tasks)
+- **Built-in sales tools included:** pipeline, leads, contacts, tasks, analytics
 
 **Perfect for:** Salons, consultants, photographers, cleaning services, tutors, studios, repair services, wellness providers, and more.
 
-### 💼 Sales Management Module
-Manage your entire sales operation (no website required):
+### 💼 Sales Management (Optional Standalone)
+Manage your entire sales operation **without a booking site** (optional for those who only need CRM):
 - Capture and qualify leads automatically
 - Visual pipeline to track deals through stages
 - Tasks and follow-ups so nothing slips
 - Dashboard with pipeline value and metrics
 
-**Perfect for:** B2B sales teams, agencies, consultancies, freelancers, professional services.
+**Perfect for:** B2B sales teams, agencies, consultancies, freelancers, professional services who don't need a booking site.
 
 ### ⚡ Use Both Together
 Accept orders from your website **and** manage B2B sales pipelines in one platform. Bookings can feed into your sales workflow when both modules are enabled.
@@ -275,6 +277,15 @@ If `npm run build` fails, ensure:
 - Environment variables are set in `.env`
 - MySQL is running: `docker-compose up -d`
 
+## About
+
+**Business OS** is a product by [Technonaire](https://technonaire.com/).
+
+- **My Business** is the main module: your business website + booking/ordering system with integrated sales tools
+- **Sales Management** can be used standalone for CRM-only needs (optional)
+- Multi-tenant architecture with strong data isolation
+- Built for entrepreneurs worldwide
+
 ## License
 
 MIT
@@ -282,3 +293,7 @@ MIT
 ## Contributing
 
 Pull requests welcome! Please maintain multi-tenant architecture and test both modules.
+
+---
+
+© 2026 [Technonaire](https://technonaire.com/) · Business OS

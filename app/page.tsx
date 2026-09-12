@@ -15,9 +15,17 @@ function HomePageContent() {
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-semibold text-gray-900 dark:text-white transition-colors">
-              BusinessOS
+            <Link href="/" className="flex items-center gap-2 transition-colors">
+              <img src="/businessos-logo.svg" alt="Business OS" className="h-8 dark:invert" />
             </Link>
+            <a 
+              href="https://technonaire.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              by Technonaire
+            </a>
             <div className="flex items-center gap-4">
               <button
                 onClick={toggleTheme}
@@ -583,9 +591,18 @@ function HomePageContent() {
       {/* Footer */}
       <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors">
-              © 2026 BusinessOS. Built for entrepreneurs.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-2">
+                <img src="/favicon.svg" alt="" className="w-6 h-6" />
+                <span>© 2026 <a href="https://technonaire.com/" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-blue-600 transition-colors">Technonaire</a></span>
+              </div>
+              <span className="hidden md:inline">·</span>
+              <span className="font-medium">Business OS</span>
+              <span className="hidden md:inline">·</span>
+              <a href="https://technonaire.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+                Visit Technonaire.com
+              </a>
             </div>
             <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <Link href="/login" className="hover:text-gray-900 dark:hover:text-white transition-all duration-200 hover:scale-110">Login</Link>

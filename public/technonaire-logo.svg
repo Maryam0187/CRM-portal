@@ -1,0 +1,17 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- T icon -->
+  <rect x="2" y="8" width="28" height="24" rx="6" fill="url(#gradient1)"/>
+  <path d="M10 14h12M16 14v12" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Text -->
+  <text x="38" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="currentColor">
+    Technonaire
+  </text>
+  
+  <defs>
+    <linearGradient id="gradient1" x1="2" y1="8" x2="30" y2="32">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg>
