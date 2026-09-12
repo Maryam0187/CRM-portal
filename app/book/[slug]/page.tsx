@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import { formatLocalDate } from '@/lib/helpers';
 
 export default function BookingPage() {
   const params = useParams();
@@ -157,7 +158,7 @@ export default function BookingPage() {
                   <input
                     type="date"
                     className="input"
-                    min={new Date().toISOString().split('T')[0]}
+                    min={formatLocalDate()}
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
                   />
