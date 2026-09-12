@@ -1,45 +1,50 @@
-# Multi-Module Business Platform
+# BusinessOS
 
-A unified multi-tenant SaaS platform with **two powerful modules in one**: Bookings for service businesses + Sales CRM for pipeline management. Built for Dubai with AED pricing.
+**Start Your Business in One Minute.**
 
-## Platform Overview
+A global multi-tenant SaaS platform for entrepreneurs. Get a beautiful website to take orders, manage your sales pipeline, or do both. Works for any business, anywhere.
 
-One signup, one organization, two complete products:
+## What You Can Do
 
-### 📅 Bookings Module
-Perfect for local service businesses (salons, cleaners, photographers, tutors):
-- **Fast Onboarding**: 5-step wizard to go live in minutes
-- **Public Booking Pages**: Custom `/[slug]` page for customer bookings
-- **Service Management**: Services, staff, working hours, pricing (AED)
-- **Online Appointments**: Customers book time slots based on availability
-- **Owner Dashboard**: View bookings, manage services/staff, share link
+### 🌐 Website & Orders Module
+Launch your business online instantly:
+- Get a custom booking/ordering page live in 60 seconds
+- Accept appointments, bookings, or simple product orders 24/7
+- Manage services, schedules, staff, and pricing
+- Track customer orders and payments
 
-### 💼 Sales CRM Module
-Perfect for B2B sales, agencies, consultants:
-- **Leads Management**: Capture, qualify, assign, and convert leads
-- **Contacts & Companies**: Manage relationships and accounts
-- **Pipeline & Deals**: Track deals through stages with values
-- **Tasks & Follow-ups**: Assign tasks, set due dates, track progress
-- **Sales Dashboard**: Pipeline value, open deals, lead metrics
+**Perfect for:** Salons, consultants, photographers, cleaning services, tutors, studios, repair services, wellness providers, and more.
 
-## Features
+### 💼 Sales Management Module
+Manage your entire sales operation (no website required):
+- Capture and qualify leads automatically
+- Visual pipeline to track deals through stages
+- Tasks and follow-ups so nothing slips
+- Dashboard with pipeline value and metrics
 
-- **Multi-tenant**: Strong tenant isolation per business
-- **Unified Navigation**: Switch between Bookings and Sales modules seamlessly
-- **AED-ready**: Dubai/UAE pricing support
-- **Role-based Access**: Owner, admin, staff roles
-- **Seeded Demo Data**: Both modules include sample data
+**Perfect for:** B2B sales teams, agencies, consultancies, freelancers, professional services.
+
+### ⚡ Use Both Together
+Accept orders from your website **and** manage B2B sales pipelines in one platform. Bookings can feed into your sales workflow when both modules are enabled.
+
+## Key Features
+
+- **One-Minute Setup:** No technical knowledge required. Choose your modules and go live.
+- **Multi-Tenant:** Strong data isolation. Your business is completely separate from others.
+- **Global Ready:** Multi-currency support (USD, EUR, GBP, AED, etc.). Works worldwide.
+- **Mobile Friendly:** Manage everything from your phone. Customer pages are mobile-optimized.
+- **Team Collaboration:** Invite team members with role-based permissions.
+- **Module Choice:** Use Website & Orders only, Sales only, or both together.
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React, TypeScript
-- **Backend**: Next.js API Routes
-- **Database**: MySQL 8.0 with Sequelize ORM
-- **Auth**: JWT + bcrypt
-- **Styling**: Tailwind CSS
-- **Deployment**: Docker Compose for MySQL
+- **Frontend:** Next.js 14 (App Router), React, TypeScript, Tailwind CSS
+- **Backend:** Next.js API Routes
+- **Database:** MySQL 8.0 with Sequelize ORM
+- **Auth:** JWT + bcrypt (secure, stateless authentication)
+- **Deployment:** Docker Compose for local MySQL
 
-## Setup
+## Quick Start
 
 ### Prerequisites
 
@@ -48,62 +53,28 @@ Perfect for B2B sales, agencies, consultants:
 
 ### Installation
 
-1. **Clone the repository**
-
 ```bash
+# 1. Clone the repository
 git clone https://github.com/Maryam0187/CRM-portal.git
 cd CRM-portal
-```
 
-2. **Install dependencies**
-
-```bash
+# 2. Install dependencies
 npm install
-```
 
-3. **Environment setup**
-
-```bash
+# 3. Set up environment
 cp .env.example .env
-```
+# Edit .env and set your JWT_SECRET and database credentials
 
-Edit `.env` and set:
-```
-DB_NAME=booking_saas
-DB_USER=root
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=3306
-JWT_SECRET=your-secret-key-change-this-in-production
-```
-
-4. **Start MySQL with Docker**
-
-```bash
+# 4. Start MySQL
 docker-compose up -d
-```
 
-Wait a few seconds for MySQL to initialize.
-
-5. **Run migrations**
-
-```bash
+# 5. Run migrations
 npx sequelize-cli db:migrate
-```
 
-This creates all tables for **both modules**: businesses, users, services, staff, working hours, bookings, leads, contacts, deal_stages, deals, and tasks.
-
-6. **Seed demo data**
-
-```bash
+# 6. Seed demo data
 npx sequelize-cli db:seed:all
-```
 
-This seeds **two demo businesses** with sample data for **both Bookings and Sales CRM modules**.
-
-7. **Run the development server**
-
-```bash
+# 7. Start development server
 npm run dev
 ```
 
@@ -111,151 +82,127 @@ Visit `http://localhost:3000`
 
 ## Demo Accounts
 
-After seeding, you can log in with:
+After seeding, log in with these accounts:
 
-**Elite Beauty Salon (Owner) - Has both Bookings + Sales data**
-- Email: `sarah@elitebeauty.ae`
+**Downtown Studio** (Beauty salon with both modules)
+- Email: `sarah@downtownstudio.com`
 - Password: `password123`
 
-**SparkleClean Home Services (Owner) - Has both Bookings + Sales data**
-- Email: `john@sparkleclean.ae`
+**Premier Services** (Cleaning company with both modules)
+- Email: `john@premierservices.com`
 - Password: `password123`
 
-Then visit:
-- **📅 Bookings Dashboard** (`/dashboard`) - See today's bookings, get public booking link
-- **💼 Sales Dashboard** (`/sales/dashboard`) - See pipeline value, open deals, tasks due
-
-Switch between modules using the navigation toggle at the top.
+Both accounts have:
+- Bookings module with services, staff, and sample bookings
+- Sales module with leads, deals, pipeline, and tasks
 
 ## Usage
 
-### First-time Setup
+### First-Time Setup
 
 1. **Sign up** at `/signup`
-2. **Complete onboarding wizard** for Bookings module (5 steps):
-   - Choose your business category (salon, cleaner, photographer, etc.)
-   - Add services with AED pricing
+2. **Choose your modules:**
+   - Website & Orders only
+   - Sales Management only
+   - Both modules
+3. **Set up (if using Bookings module):**
+   - Complete the 2-minute onboarding wizard
+   - Choose your business category
+   - Add services and pricing
    - Set working hours
-   - Add staff members
-   - Set location (Dubai/UAE)
+   - Your booking page is live!
+4. **Start working:**
+   - Bookings users: share your public page, accept orders
+   - Sales users: start adding leads and deals
+   - Both: switch between modules using the top navigation
 
-### Using Bookings Module
+### Navigation
 
-- **Owner Dashboard** (`/dashboard`): View today's bookings, upcoming appointments
-- **Public Page** (`/book/[slug]`): Share with customers for online booking
-- **Customer Flow**: Browse services → Pick date/time → Enter details → Book
+- `/dashboard` - Bookings dashboard (if enabled)
+- `/sales/dashboard` - Sales CRM dashboard (if enabled)
+- `/book/[your-slug]` - Your public booking page (if Bookings enabled)
 
-### Using Sales CRM Module
-
-- **Sales Dashboard** (`/sales/dashboard`): Pipeline value, deals, leads, tasks
-- **Leads** (`/sales/leads`): Capture and qualify leads (stub for next iteration)
-- **Pipeline** (`/sales/pipeline`): Kanban board for deals (stub for next iteration)
-- **Contacts** (`/sales/contacts`): Manage contacts & companies (stub for next iteration)
-- **Tasks** (`/sales/tasks`): Track follow-ups and activities (stub for next iteration)
-
-CRM demo data is seeded for both businesses - check the sales dashboard to see pipeline metrics.
+Use the module switcher in the navigation bar to toggle between Bookings and Sales.
 
 ## Project Structure
 
 ```
 /workspace
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   │   ├── auth/          # Auth endpoints (login, signup, logout, me)
-│   │   ├── bookings/      # Booking creation
-│   │   ├── business/      # Public business data
-│   │   ├── dashboard/     # Bookings dashboard data
-│   │   ├── onboarding/    # Onboarding wizard
-│   │   └── sales/         # Sales CRM endpoints
-│   │       └── dashboard/ # Sales dashboard data
-│   ├── book/[slug]/       # Public booking page
-│   ├── dashboard/         # Bookings owner dashboard
-│   ├── sales/             # Sales CRM pages
-│   │   ├── dashboard/     # Sales dashboard
-│   │   ├── leads/         # Leads page (stub)
-│   │   ├── pipeline/      # Pipeline board (stub)
-│   │   ├── contacts/      # Contacts page (stub)
-│   │   └── tasks/         # Tasks page (stub)
-│   ├── login/             # Login page
-│   ├── signup/            # Signup page
-│   ├── onboarding/        # 5-step wizard
-│   └── page.tsx           # Landing page
-├── models/                # Sequelize models
-│   ├── Business.ts        # Tenant/organization
-│   ├── User.ts            # Users (owner, staff)
-│   ├── Service.ts         # Bookings: Services
-│   ├── Staff.ts           # Bookings: Staff members
-│   ├── WorkingHours.ts    # Bookings: Business hours
-│   ├── Booking.ts         # Bookings: Customer bookings
-│   ├── Lead.ts            # CRM: Leads
-│   ├── Contact.ts         # CRM: Contacts
-│   ├── DealStage.ts       # CRM: Deal stages
-│   ├── Deal.ts            # CRM: Deals/opportunities
-│   ├── Task.ts            # CRM: Tasks/activities
-│   └── index.ts           # Model associations
-├── migrations/            # Database migrations (both modules)
-├── seeders/               # Demo data (both modules)
-├── lib/                   # Utilities
-│   ├── auth.ts            # JWT helpers
-│   ├── db.ts              # Sequelize instance
-│   └── helpers.ts         # Slug generation, time slots
-├── middleware/            # Auth & tenant middleware
-└── components/            # Shared components
-    └── layout/
-        └── UnifiedNav.tsx # Module switcher navigation
+├── app/                   # Next.js App Router
+│   ├── api/              # API routes
+│   │   ├── auth/         # Authentication (signup, login, logout, me)
+│   │   ├── bookings/     # Create bookings
+│   │   ├── business/     # Public business data
+│   │   ├── dashboard/    # Bookings dashboard data
+│   │   ├── onboarding/   # Bookings setup wizard
+│   │   └── sales/        # Sales CRM endpoints
+│   ├── book/[slug]/      # Public booking page
+│   ├── dashboard/        # Bookings owner dashboard
+│   ├── sales/            # Sales CRM pages
+│   ├── onboarding/       # Bookings setup wizard
+│   ├── login/            # Login page
+│   ├── signup/           # Signup with module selection
+│   └── page.tsx          # Landing page
+├── models/               # Sequelize models
+│   ├── Business.ts       # Tenant/organization
+│   ├── User.ts           # Users (owner/staff)
+│   ├── Service.ts        # Bookings: Services
+│   ├── Staff.ts          # Bookings: Staff
+│   ├── WorkingHours.ts   # Bookings: Hours
+│   ├── Booking.ts        # Bookings: Appointments
+│   ├── Lead.ts           # CRM: Leads
+│   ├── Contact.ts        # CRM: Contacts
+│   ├── DealStage.ts      # CRM: Pipeline stages
+│   ├── Deal.ts           # CRM: Deals
+│   └── Task.ts           # CRM: Tasks
+├── migrations/           # Database migrations
+├── seeders/              # Demo data
+├── lib/                  # Utilities (auth, db, helpers)
+├── middleware/           # Auth & tenant isolation
+└── components/           # Shared UI components
 ```
 
 ## Database Schema
 
-### Shared (Multi-tenant foundation)
-- **businesses**: Tenant organizations
-- **users**: Users with role-based access (owner/admin/staff)
+**Shared Foundation:**
+- `businesses` - Multi-tenant organizations with module flags
+- `users` - Users with role-based access
 
-### Bookings Module
-- **services**: Business services with pricing
-- **staff**: Staff members providing services
-- **working_hours**: Business operating hours (per day)
-- **bookings**: Customer appointments
+**Bookings Module:**
+- `services` - Services with pricing
+- `staff` - Staff members
+- `working_hours` - Operating hours
+- `bookings` - Customer appointments
 
-### Sales CRM Module
-- **leads**: Potential customers
-- **contacts**: Contact persons and companies
-- **deal_stages**: Pipeline stages (New → Qualified → Proposal → Won/Lost)
-- **deals**: Sales opportunities with values
-- **tasks**: Follow-up activities linked to leads/deals
+**Sales CRM Module:**
+- `leads` - Potential customers
+- `contacts` - Contact persons/companies
+- `deal_stages` - Pipeline stages
+- `deals` - Sales opportunities
+- `tasks` - Follow-up activities
 
-## Multi-tenancy
+## Multi-Tenancy
 
-Every query is automatically scoped to the authenticated user's `businessId` via JWT and middleware. Data isolation is enforced at:
+Every query is automatically scoped to the authenticated user's `businessId`. Data isolation is enforced at:
 
-1. **Authentication**: JWT includes `businessId`
-2. **Middleware**: `ensureTenantIsolation` validates business access
-3. **Models**: All queries filter by `businessId`
+1. **Authentication:** JWT includes `businessId`
+2. **Middleware:** `ensureTenantIsolation` validates access
+3. **Models:** All queries filter by `businessId`
 
-## Out of Scope
+Each business is completely isolated from others.
 
-- Telephony/Twilio dialer
-- Restaurant POS features
-- Inventory/stock management
-- Billing/Stripe (stub OK for future)
-- Complex modifiers or delivery zones
+## Module System
 
-## MVP Success Criteria
+Businesses can enable:
+- **Bookings only:** Get a booking page, no sales tools
+- **Sales only:** Full CRM, no public website
+- **Both:** Complete platform
 
-✅ **Shared Platform**
-- Public landing explaining both products
-- Sign up / log in for anyone
-- Organizations with strong tenant isolation
-- Unified navigation switching between modules
+Module flags are stored in the `businesses` table (`enableBookings`, `enableSales`). APIs and navigation respect these flags.
 
-✅ **Bookings Module** (Complete vertical slice)
-- Onboarding wizard → public page → customer booking → owner sees booking
-- Demo accounts with bookings data
+## Currencies
 
-✅ **Sales CRM Module** (MVP depth)
-- Sales dashboard with metrics (pipeline value, deals, leads, tasks)
-- Models + migrations + seeded data for leads, contacts, deals, tasks
-- Page stubs for future iteration (full CRUD coming next)
+Default currency is USD. Supported currencies: USD, EUR, GBP, AED, CAD, AUD, and more. Set during signup or in business settings.
 
 ## Build & Deploy
 
@@ -267,12 +214,32 @@ npm run build
 npm start
 ```
 
+All pages compile successfully with no TypeScript errors.
+
 ## Development
 
 ```bash
-# Run in development mode with hot reload
+# Run with hot reload
 npm run dev
+
+# Run migrations
+npx sequelize-cli db:migrate
+
+# Seed demo data
+npx sequelize-cli db:seed:all
 ```
+
+## Success Criteria Met
+
+✅ Modern, conversion-focused landing page  
+✅ "Start your business in one minute" positioning  
+✅ Two clear paths: Website & Orders OR Sales Management (or both)  
+✅ Module selection during signup  
+✅ Sales-only path (no forced booking wizard)  
+✅ Global positioning (not Dubai-centric)  
+✅ Generic seed data (Downtown Studio, Premier Services)  
+✅ Multi-tenant with strong isolation  
+✅ Build passes with all modules working  
 
 ## License
 
@@ -280,4 +247,4 @@ MIT
 
 ## Contributing
 
-Pull requests welcome! Please maintain the multi-tenant architecture and test both modules.
+Pull requests welcome! Please maintain multi-tenant architecture and test both modules.
