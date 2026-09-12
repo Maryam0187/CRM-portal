@@ -178,7 +178,7 @@ function HomePageContent() {
                       MAIN PLATFORM
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3 transition-colors">
-                      Website & Orders
+                      My Business
                     </h3>
                     <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed transition-colors max-w-2xl">
                       Your business online in 60 seconds. Accept bookings, appointments, or orders from a beautiful custom page—with complete sales management built right in.

@@ -207,7 +207,7 @@ export default function SignupPage() {
                       />
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <div className="font-medium text-gray-900">🌐 Website & Orders</div>
+                          <div className="font-medium text-gray-900">🌐 My Business</div>
                           <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">Recommended</span>
                         </div>
                         <div className="text-sm text-gray-600 mt-1">

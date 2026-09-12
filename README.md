@@ -6,12 +6,13 @@ A global multi-tenant SaaS platform for entrepreneurs. Get a beautiful website t
 
 ## What You Can Do
 
-### 🌐 Website & Orders Module
+### 🌐 My Business Module
 Launch your business online instantly:
 - Get a custom booking/ordering page live in 60 seconds
 - Accept appointments, bookings, or simple product orders 24/7
 - Manage services, schedules, staff, and pricing
 - Track customer orders and payments
+- Built-in sales tools included (pipeline, leads, contacts, tasks)
 
 **Perfect for:** Salons, consultants, photographers, cleaning services, tutors, studios, repair services, wellness providers, and more.
 
@@ -34,7 +35,7 @@ Accept orders from your website **and** manage B2B sales pipelines in one platfo
 - **Global Ready:** Multi-currency support (USD, EUR, GBP, AED, etc.). Works worldwide.
 - **Mobile Friendly:** Manage everything from your phone. Customer pages are mobile-optimized.
 - **Team Collaboration:** Invite team members with role-based permissions.
-- **Module Choice:** Use Website & Orders only, Sales only, or both together.
+- **Module Choice:** Use My Business (with built-in sales), Sales Management only, or both together.
 
 ## Tech Stack
 
@@ -93,7 +94,7 @@ After seeding, log in with these accounts:
 - Password: `password123`
 
 Both accounts have:
-- Bookings module with services, staff, and sample bookings
+- My Business module with services, staff, and sample bookings
 - Sales module with leads, deals, pipeline, and tasks
 
 ## Usage
@@ -102,27 +103,27 @@ Both accounts have:
 
 1. **Sign up** at `/signup`
 2. **Choose your modules:**
-   - Website & Orders only
+   - My Business (recommended - includes sales tools)
    - Sales Management only
    - Both modules
-3. **Set up (if using Bookings module):**
+3. **Set up (if using My Business module):**
    - Complete the 2-minute onboarding wizard
    - Choose your business category
    - Add services and pricing
    - Set working hours
    - Your booking page is live!
 4. **Start working:**
-   - Bookings users: share your public page, accept orders
+   - My Business users: share your public page, accept orders
    - Sales users: start adding leads and deals
    - Both: switch between modules using the top navigation
 
 ### Navigation
 
-- `/dashboard` - Bookings dashboard (if enabled)
+- `/dashboard` - My Business dashboard (if enabled)
 - `/sales/dashboard` - Sales CRM dashboard (if enabled)
-- `/book/[your-slug]` - Your public booking page (if Bookings enabled)
+- `/book/[your-slug]` - Your public booking page (if My Business enabled)
 
-Use the module switcher in the navigation bar to toggle between Bookings and Sales.
+Use the module switcher in the navigation bar to toggle between My Business and Sales.
 
 ## Project Structure
 
@@ -168,7 +169,7 @@ Use the module switcher in the navigation bar to toggle between Bookings and Sal
 - `businesses` - Multi-tenant organizations with module flags
 - `users` - Users with role-based access
 
-**Bookings Module:**
+**My Business Module:**
 - `services` - Services with pricing
 - `staff` - Staff members
 - `working_hours` - Operating hours
@@ -194,7 +195,7 @@ Each business is completely isolated from others.
 ## Module System
 
 Businesses can enable:
-- **Bookings only:** Get a booking page, no sales tools
+- **My Business only:** Get a booking page with built-in sales tools
 - **Sales only:** Full CRM, no public website
 - **Both:** Complete platform
 
@@ -233,7 +234,7 @@ npx sequelize-cli db:seed:all
 
 ✅ Modern, conversion-focused landing page  
 ✅ "Start your business in one minute" positioning  
-✅ Two clear paths: Website & Orders OR Sales Management (or both)  
+✅ Main product: My Business (with built-in sales) + optional Sales Management standalone  
 ✅ Module selection during signup  
 ✅ Sales-only path (no forced booking wizard)  
 ✅ Global positioning (not Dubai-centric)  
