@@ -1,0 +1,56 @@
+{
+  "name": "crm-portal",
+  "version": "1.0.0",
+  "description": "Multi-tenant SaaS sales management platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npm run db:migrate && npm run db:seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maryam0187/CRM-portal.git"
+  },
+  "keywords": [
+    "crm",
+    "sales",
+    "saas",
+    "multi-tenant"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maryam0187/CRM-portal/issues"
+  },
+  "homepage": "https://github.com/Maryam0187/CRM-portal#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie": "^1.0.2",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.1",
+    "next": "^14.2.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sequelize": "^6.37.5",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.3.5",
+    "postcss": "^8.5.1",
+    "sequelize-cli": "^6.6.2",
+    "tailwindcss": "^3.4.17"
+  }
+}
