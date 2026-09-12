@@ -78,17 +78,10 @@ export default function SignupPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block mb-4">
-            <img src="/businessos-logo-light.svg" alt="Business OS" className="h-10 mx-auto" />
+          <Link href="/" className="inline-flex items-center gap-3 mb-4 justify-center">
+            <img src="/technonaire-logo.svg" alt="Technonaire" className="h-9" />
+            <img src="/businessos-wordmark-light.svg" alt="Business OS" className="h-10" />
           </Link>
-          <a 
-            href="https://technonaire.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            by Technonaire
-          </a>
           <h1 className="text-2xl font-bold text-gray-900 mt-6">
             {step === 1 ? 'Create Your Account' : 'Set Up Your Business'}
           </h1>

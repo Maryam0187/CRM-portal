@@ -1,0 +1,13 @@
+<svg width="160" height="50" viewBox="0 0 160 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Text: TECHNONAIRE -->
+  <text x="5" y="20" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" 
+        font-size="11" font-weight="600" letter-spacing="2.5" fill="#6b7280">
+    TECHNONAIRE
+  </text>
+  
+  <!-- Text: Business (serif, dark) + OS (gold) -->
+  <text x="5" y="42" font-family="Georgia, 'Times New Roman', serif" 
+        font-size="26" font-weight="400" fill="#1f2937" font-style="normal">
+    Business<tspan fill="#d97706" font-weight="500">OS</tspan>
+  </text>
+</svg>
