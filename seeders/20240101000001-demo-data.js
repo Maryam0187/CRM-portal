@@ -4,16 +4,14 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // Create demo organization
-    const [orgId] = await queryInterface.bulkInsert('organizations', [
+    // Create demo organization (MySQL bulkInsert returns insertId, not rows)
+    const organizationId = await queryInterface.bulkInsert('organizations', [
       {
         name: 'Acme Corporation',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ], { returning: true });
-
-    const organizationId = orgId || 1;
+    ]);
 
     // Hash password for demo users
     const hashedPassword = await bcrypt.hash('password123', 10);
