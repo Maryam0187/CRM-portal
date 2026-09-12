@@ -5,7 +5,7 @@ let sequelize: Sequelize | null = null;
 function getSequelizeInstance(): Sequelize {
   if (!sequelize) {
     sequelize = new Sequelize(
-      process.env.DB_NAME || 'crm_portal',
+      process.env.DB_NAME || 'booking_saas',
       process.env.DB_USER || 'root',
       process.env.DB_PASSWORD || 'password',
       {

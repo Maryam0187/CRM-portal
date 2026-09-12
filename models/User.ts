@@ -3,18 +3,18 @@ import sequelize from '@/lib/db';
 
 export enum UserRole {
   OWNER = 'owner',
-  ADMIN = 'admin',
-  SALES_REP = 'sales_rep',
+  STAFF = 'staff',
 }
 
 interface UserAttributes {
   id: number;
-  organizationId: number;
+  businessId: number;
   email: string;
   password: string;
   firstName: string;
   lastName: string;
   role: UserRole;
+  phone?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -23,12 +23,13 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
 class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
-  public organizationId!: number;
+  public businessId!: number;
   public email!: string;
   public password!: string;
   public firstName!: string;
   public lastName!: string;
   public role!: UserRole;
+  public phone?: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -40,11 +41,11 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    organizationId: {
+    businessId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       references: {
-        model: 'organizations',
+        model: 'businesses',
         key: 'id',
       },
     },
@@ -68,7 +69,11 @@ User.init(
     role: {
       type: DataTypes.ENUM(...Object.values(UserRole)),
       allowNull: false,
-      defaultValue: UserRole.SALES_REP,
+      defaultValue: UserRole.STAFF,
+    },
+    phone: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
     },
   },
   {
@@ -77,7 +82,7 @@ User.init(
     timestamps: true,
     indexes: [
       {
-        fields: ['organizationId'],
+        fields: ['businessId'],
       },
       {
         unique: true,

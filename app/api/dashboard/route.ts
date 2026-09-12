@@ -1,93 +1,70 @@
 import { NextResponse } from 'next/server';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
-import { Deal, Lead, Task, DealStage } from '@/models';
-import { getOrganizationId } from '@/middleware/tenant';
+import { Booking, Service, Staff, Business } from '@/models';
 import { Op } from 'sequelize';
-import sequelize from '@/lib/db';
 
-async function getHandler(req: AuthenticatedRequest) {
+export const dynamic = 'force-dynamic';
+
+async function handler(req: AuthenticatedRequest) {
   try {
-    const organizationId = getOrganizationId(req);
-    
-    const totalPipelineValue = await Deal.sum('value', {
-      where: {
-        organizationId,
-        stageId: {
-          [Op.notIn]: await DealStage.findAll({
-            where: { organizationId, name: ['Won', 'Lost'] },
-            attributes: ['id'],
-          }).then(stages => stages.map(s => s.id)),
-        },
-      },
-    }) || 0;
-
-    const openDeals = await Deal.count({
-      where: {
-        organizationId,
-        stageId: {
-          [Op.notIn]: await DealStage.findAll({
-            where: { organizationId, name: ['Won', 'Lost'] },
-            attributes: ['id'],
-          }).then(stages => stages.map(s => s.id)),
-        },
-      },
-    });
-
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-
-    const leadsThisWeek = await Lead.count({
-      where: {
-        organizationId,
-        createdAt: {
-          [Op.gte]: sevenDaysAgo,
-        },
-      },
-    });
+    const businessId = req.user!.businessId;
 
     const today = new Date();
-    today.setHours(23, 59, 59, 999);
+    today.setHours(0, 0, 0, 0);
 
-    const tasksDueToday = await Task.count({
+    const bookingsToday = await Booking.findAll({
       where: {
-        organizationId,
-        status: {
-          [Op.ne]: 'completed',
-        },
-        dueDate: {
-          [Op.lte]: today,
-        },
+        businessId,
+        bookingDate: today.toISOString().split('T')[0],
       },
-    });
-
-    const dealsByStage = await Deal.findAll({
-      where: { organizationId },
-      attributes: [
-        'stageId',
-        [sequelize.fn('COUNT', sequelize.col('Deal.id')), 'count'],
-        [sequelize.fn('SUM', sequelize.col('value')), 'totalValue'],
-      ],
       include: [
         {
-          model: DealStage,
-          as: 'stage',
-          attributes: ['id', 'name', 'color', 'order'],
+          model: Service,
+          as: 'service',
+          attributes: ['name', 'price'],
+        },
+        {
+          model: Staff,
+          as: 'staff',
+          attributes: ['name'],
         },
       ],
-      group: ['stageId', 'stage.id'],
-      raw: false,
+      order: [['startTime', 'ASC']],
+    });
+
+    const business = await Business.findByPk(businessId, {
+      include: [
+        {
+          model: Service,
+          as: 'services',
+          where: { active: true },
+          required: false,
+        },
+        {
+          model: Staff,
+          as: 'staff',
+          where: { active: true },
+          required: false,
+        },
+      ],
+    });
+
+    const upcomingBookings = await Booking.count({
+      where: {
+        businessId,
+        bookingDate: {
+          [Op.gte]: today.toISOString().split('T')[0],
+        },
+        status: {
+          [Op.in]: ['pending', 'confirmed'],
+        },
+      },
     });
 
     return NextResponse.json({
-      totalPipelineValue: parseFloat(totalPipelineValue.toFixed(2)),
-      openDeals,
-      leadsThisWeek,
-      tasksDueToday,
-      dealsByStage: dealsByStage.map((deal: any) => ({
-        stage: deal.stage,
-        count: parseInt(deal.get('count') as string),
-        totalValue: parseFloat((deal.get('totalValue') || 0) as string),
-      })),
+      bookingsToday,
+      business,
+      upcomingBookings,
     });
   } catch (error: any) {
     console.error('Dashboard error:', error);
@@ -98,5 +75,4 @@ async function getHandler(req: AuthenticatedRequest) {
   }
 }
 
-export const GET = withAuth(getHandler);
-export const dynamic = 'force-dynamic';
+export const GET = withAuth(handler);

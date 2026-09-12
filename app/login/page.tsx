@@ -39,10 +39,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">CRM Portal</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Welcome back</h1>
           <p className="text-gray-600 mt-2">Sign in to your account</p>
         </div>
 
@@ -54,9 +54,7 @@ export default function LoginPage() {
           )}
 
           <div>
-            <label htmlFor="email" className="label">
-              Email
-            </label>
+            <label htmlFor="email" className="label">Email</label>
             <input
               id="email"
               type="email"
@@ -69,9 +67,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="label">
-              Password
-            </label>
+            <label htmlFor="password" className="label">Password</label>
             <input
               id="password"
               type="password"
@@ -86,7 +82,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full btn-primary disabled:opacity-50"
           >
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
@@ -103,12 +99,8 @@ export default function LoginPage() {
 
         <div className="mt-6 p-4 bg-blue-50 rounded-lg">
           <p className="text-sm text-gray-700 font-medium mb-2">Demo Accounts:</p>
-          <p className="text-xs text-gray-600">
-            <strong>Owner:</strong> owner@acme.com / password123
-          </p>
-          <p className="text-xs text-gray-600">
-            <strong>Sales:</strong> sales@acme.com / password123
-          </p>
+          <p className="text-xs text-gray-600">owner@elitebeauty.ae / password123</p>
+          <p className="text-xs text-gray-600">owner@sparkleclean.ae / password123</p>
         </div>
       </div>
     </div>

@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Organization, User } from '@/models';
+import { Business, User } from '@/models';
 import { hashPassword, generateToken } from '@/lib/auth';
 import { UserRole } from '@/models/User';
+import { BusinessCategory } from '@/models/Business';
 import * as cookie from 'cookie';
 
 export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, password, firstName, lastName, organizationName } = body;
+    const { email, password, firstName, lastName } = body;
 
-    if (!email || !password || !firstName || !lastName || !organizationName) {
+    if (!email || !password || !firstName || !lastName) {
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -27,14 +27,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const organization = await Organization.create({
-      name: organizationName,
+    // Create temporary business (will be completed in onboarding)
+    const business = await Business.create({
+      name: `${firstName}'s Business`,
+      slug: `temp-${Date.now()}`,
+      category: BusinessCategory.SALON,
+      location: 'Dubai',
+      currency: 'AED',
     });
 
     const hashedPassword = await hashPassword(password);
 
     const user = await User.create({
-      organizationId: organization.id,
+      businessId: business.id,
       email,
       password: hashedPassword,
       firstName,
@@ -44,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     const token = generateToken({
       userId: user.id,
-      organizationId: user.organizationId,
+      businessId: user.businessId,
       email: user.email,
       role: user.role,
     });
@@ -53,7 +58,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60,
+      maxAge: 30 * 24 * 60 * 60,
       path: '/',
     });
 
@@ -65,8 +70,9 @@ export async function POST(req: NextRequest) {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
-        organizationId: user.organizationId,
+        businessId: user.businessId,
       },
+      needsOnboarding: true,
     }, { status: 201 });
 
     response.headers.set('Set-Cookie', cookieStr);

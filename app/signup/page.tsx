@@ -11,7 +11,6 @@ export default function SignupPage() {
     password: '',
     firstName: '',
     lastName: '',
-    organizationName: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,7 +35,7 @@ export default function SignupPage() {
         return;
       }
 
-      router.push('/dashboard');
+      router.push('/onboarding');
     } catch (err) {
       setError('An error occurred. Please try again.');
       setLoading(false);
@@ -48,11 +47,11 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">CRM Portal</h1>
-          <p className="text-gray-600 mt-2">Create your account</p>
+          <h1 className="text-3xl font-bold text-gray-900">Create your account</h1>
+          <p className="text-gray-600 mt-2">Start accepting bookings in 5 minutes</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -62,27 +61,9 @@ export default function SignupPage() {
             </div>
           )}
 
-          <div>
-            <label htmlFor="organizationName" className="label">
-              Organization Name
-            </label>
-            <input
-              id="organizationName"
-              name="organizationName"
-              type="text"
-              required
-              className="input"
-              value={formData.organizationName}
-              onChange={handleChange}
-              placeholder="Acme Inc"
-            />
-          </div>
-
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="firstName" className="label">
-                First Name
-              </label>
+              <label htmlFor="firstName" className="label">First Name</label>
               <input
                 id="firstName"
                 name="firstName"
@@ -95,9 +76,7 @@ export default function SignupPage() {
               />
             </div>
             <div>
-              <label htmlFor="lastName" className="label">
-                Last Name
-              </label>
+              <label htmlFor="lastName" className="label">Last Name</label>
               <input
                 id="lastName"
                 name="lastName"
@@ -112,9 +91,7 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <label htmlFor="email" className="label">
-              Email
-            </label>
+            <label htmlFor="email" className="label">Email</label>
             <input
               id="email"
               name="email"
@@ -128,9 +105,7 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="label">
-              Password
-            </label>
+            <label htmlFor="password" className="label">Password</label>
             <input
               id="password"
               name="password"
@@ -147,7 +122,7 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full btn-primary disabled:opacity-50"
           >
             {loading ? 'Creating account...' : 'Create account'}
           </button>

@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { User } from '@/models';
+import { User, Business } from '@/models';
 import { comparePassword, generateToken } from '@/lib/auth';
 import * as cookie from 'cookie';
 
 export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,7 +17,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ 
+      where: { email },
+      include: [{
+        model: Business,
+        as: 'business',
+        attributes: ['slug'],
+      }],
+    });
+    
     if (!user) {
       return NextResponse.json(
         { error: 'Invalid credentials' },
@@ -36,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     const token = generateToken({
       userId: user.id,
-      organizationId: user.organizationId,
+      businessId: user.businessId,
       email: user.email,
       role: user.role,
     });
@@ -45,7 +52,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60,
+      maxAge: 30 * 24 * 60 * 60,
       path: '/',
     });
 
@@ -57,7 +64,7 @@ export async function POST(req: NextRequest) {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
-        organizationId: user.organizationId,
+        businessId: user.businessId,
       },
     });
 

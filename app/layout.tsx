@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'CRM Portal - Sales Management Platform',
-  description: 'Multi-tenant SaaS sales management platform',
+  title: 'Booking SaaS - Dubai Business Opportunities',
+  description: 'Create your booking page in minutes and start accepting bookings',
 }
 
 export default function RootLayout({

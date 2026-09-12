@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import * as cookie from 'cookie';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST() {
   const cookieStr = cookie.stringifySetCookie('token', '', {
     httpOnly: true,
@@ -14,4 +16,3 @@ export async function POST() {
   response.headers.set('Set-Cookie', cookieStr);
   return response;
 }
-export const dynamic = 'force-dynamic';

@@ -1,21 +1,21 @@
 import { AuthenticatedRequest } from './auth';
 
-export function getOrganizationId(req: AuthenticatedRequest): number {
-  if (!req.user?.organizationId) {
-    throw new Error('Organization ID not found in request');
+export function getBusinessId(req: AuthenticatedRequest): number {
+  if (!req.user?.businessId) {
+    throw new Error('Business ID not found in request');
   }
-  return req.user.organizationId;
+  return req.user.businessId;
 }
 
 export function ensureTenantIsolation(
   queryOptions: any,
-  organizationId: number
+  businessId: number
 ): any {
   return {
     ...queryOptions,
     where: {
       ...queryOptions.where,
-      organizationId,
+      businessId,
     },
   };
 }

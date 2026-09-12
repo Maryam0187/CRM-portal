@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('working_hours', {
       id: {
         type: Sequelize.INTEGER.UNSIGNED,
         autoIncrement: true,
@@ -18,31 +18,25 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      email: {
-        type: Sequelize.STRING(255),
+      dayOfWeek: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
+        comment: '0=Sunday, 1=Monday, ..., 6=Saturday',
       },
-      password: {
-        type: Sequelize.STRING(255),
+      openTime: {
+        type: Sequelize.STRING(5),
         allowNull: false,
+        comment: 'Format: HH:MM',
       },
-      firstName: {
-        type: Sequelize.STRING(100),
+      closeTime: {
+        type: Sequelize.STRING(5),
         allowNull: false,
+        comment: 'Format: HH:MM',
       },
-      lastName: {
-        type: Sequelize.STRING(100),
+      isClosed: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-      },
-      role: {
-        type: Sequelize.ENUM('owner', 'staff'),
-        allowNull: false,
-        defaultValue: 'staff',
-      },
-      phone: {
-        type: Sequelize.STRING(50),
-        allowNull: true,
+        defaultValue: false,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -54,10 +48,10 @@ module.exports = {
       },
     });
 
-    await queryInterface.addIndex('users', ['businessId']);
+    await queryInterface.addIndex('working_hours', ['businessId', 'dayOfWeek']);
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('working_hours');
   },
 };

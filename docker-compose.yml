@@ -3,10 +3,10 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: crm_mysql
+    container_name: booking_mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: crm_portal
+      MYSQL_DATABASE: booking_saas
     ports:
       - "3306:3306"
     volumes:

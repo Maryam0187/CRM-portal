@@ -1,7 +1,7 @@
 {
-  "name": "crm-portal",
+  "name": "booking-saas",
   "version": "1.0.0",
-  "description": "Multi-tenant SaaS sales management platform",
+  "description": "Multi-tenant SaaS booking platform for local service businesses in Dubai",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -17,10 +17,12 @@
     "url": "git+https://github.com/Maryam0187/CRM-portal.git"
   },
   "keywords": [
-    "crm",
-    "sales",
+    "booking",
+    "appointments",
     "saas",
-    "multi-tenant"
+    "multi-tenant",
+    "dubai",
+    "uae"
   ],
   "author": "",
   "license": "ISC",

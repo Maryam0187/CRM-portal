@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('services', {
       id: {
         type: Sequelize.INTEGER.UNSIGNED,
         autoIncrement: true,
@@ -18,31 +18,32 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      email: {
-        type: Sequelize.STRING(255),
-        allowNull: false,
-        unique: true,
-      },
-      password: {
+      name: {
         type: Sequelize.STRING(255),
         allowNull: false,
       },
-      firstName: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-      },
-      lastName: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-      },
-      role: {
-        type: Sequelize.ENUM('owner', 'staff'),
-        allowNull: false,
-        defaultValue: 'staff',
-      },
-      phone: {
-        type: Sequelize.STRING(50),
+      description: {
+        type: Sequelize.TEXT,
         allowNull: true,
+      },
+      duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        comment: 'Duration in minutes',
+      },
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
+      },
+      currency: {
+        type: Sequelize.STRING(3),
+        allowNull: false,
+        defaultValue: 'AED',
+      },
+      active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -54,10 +55,10 @@ module.exports = {
       },
     });
 
-    await queryInterface.addIndex('users', ['businessId']);
+    await queryInterface.addIndex('services', ['businessId']);
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('services');
   },
 };

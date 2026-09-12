@@ -1,18 +1,17 @@
 import { NextResponse } from 'next/server';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
-import { User, Organization } from '@/models';
+import { User, Business } from '@/models';
 
 export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
 
 async function handler(req: AuthenticatedRequest) {
   try {
     const user = await User.findByPk(req.user!.userId, {
       include: [
         {
-          model: Organization,
-          as: 'organization',
-          attributes: ['id', 'name'],
+          model: Business,
+          as: 'business',
+          attributes: ['id', 'name', 'slug', 'category', 'location'],
         },
       ],
       attributes: { exclude: ['password'] },
