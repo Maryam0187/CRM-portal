@@ -59,54 +59,63 @@ function HomePageContent() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Hero Content */}
             <AnimatedSection delay={100}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300 mb-8 shadow-sm transition-colors duration-300">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full text-sm text-green-700 dark:text-green-300 mb-6 shadow-sm transition-colors duration-300">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                Trusted by growing teams worldwide
+                10,000+ businesses launched this month
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight mb-6 leading-[1.1] transition-colors duration-300">
-                Launch your website
+                Your business can be
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  in one minute
+                  live in 60 seconds
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-xl transition-colors duration-300">
-                Get your business online instantly. Take bookings, accept orders, and manage 
-                customers—all with built-in sales tools to grow your revenue.
+              <p className="text-2xl font-medium text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+                No developer. No setup. Just describe what you do.
+              </p>
+              
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-xl transition-colors duration-300">
+                <strong className="text-gray-900 dark:text-white">My Business</strong> gives you a beautiful booking page, handles orders, and includes powerful sales tools. Everything you need to start, run, and grow.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link 
                   href="/signup" 
-                  className="group px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-lg hover:scale-105 transition-all duration-200 hover:shadow-xl hover:shadow-gray-900/25 dark:hover:shadow-white/25 inline-flex items-center justify-center"
+                  className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg hover:scale-105 transition-all duration-200 shadow-xl shadow-blue-600/25 hover:shadow-2xl hover:shadow-blue-600/40 inline-flex items-center justify-center"
                 >
                   Get started free
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
                 <Link 
                   href="/login" 
-                  className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center"
+                  className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-lg font-medium rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center"
                 >
-                  View demo
+                  See a demo
                 </Link>
               </div>
 
-              <div className="flex items-center gap-8 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-6 text-sm">
+                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  No credit card
+                  <span className="font-medium">Free to start</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  Setup in 60 seconds
+                  <span className="font-medium">No credit card needed</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                  <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-medium">Live in 60 seconds</span>
                 </div>
               </div>
             </AnimatedSection>
@@ -146,18 +155,21 @@ function HomePageContent() {
 
       {/* Social Proof Strip */}
       <AnimatedSection>
-        <section className="border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+        <section className="border-y border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-900 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <p className="text-center text-sm font-medium text-gray-600 dark:text-gray-400 mb-8 transition-colors">
+              TRUSTED BY THOUSANDS OF BUSINESSES WORLDWIDE
+            </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { value: '10K+', label: 'Businesses launched' },
-                { value: '150K+', label: 'Bookings processed' },
-                { value: '$5M+', label: 'Revenue tracked' },
-                { value: '99.9%', label: 'Uptime SLA' }
+                { value: '10K+', label: 'Businesses launched', color: 'text-blue-600 dark:text-blue-400' },
+                { value: '150K+', label: 'Bookings processed', color: 'text-purple-600 dark:text-purple-400' },
+                { value: '$5M+', label: 'Revenue tracked', color: 'text-green-600 dark:text-green-400' },
+                { value: '99.9%', label: 'Uptime guarantee', color: 'text-pink-600 dark:text-pink-400' }
               ].map((stat, i) => (
                 <div key={i} className="group hover:scale-110 transition-transform duration-300">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1 transition-colors">{stat.value}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors">{stat.label}</div>
+                  <div className={`text-4xl font-bold mb-1 transition-colors ${stat.color}`}>{stat.value}</div>
+                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">{stat.label}</div>
                 </div>
               ))}
             </div>
