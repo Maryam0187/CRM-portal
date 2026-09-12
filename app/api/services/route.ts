@@ -67,8 +67,9 @@ export async function POST(req: NextRequest) {
       description: description || null,
       duration: parseInt(duration),
       price: parseFloat(price),
-      active: active !== undefined ? active : true
-    });
+      active: active !== undefined ? active : true,
+      category: null
+    } as any);
 
     return NextResponse.json({ service }, { status: 201 });
   } catch (error: any) {
