@@ -111,23 +111,33 @@ function HomePageContent() {
               </div>
             </AnimatedSection>
 
-            {/* Hero Visual - Premium Illustration */}
+            {/* Hero Visual - Success Chart */}
             <AnimatedSection delay={300}>
               <div className="relative group">
-                <div className="relative z-10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-[1.02]">
+                <div className="relative z-10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-[1.02] shadow-2xl border border-gray-200 dark:border-gray-700">
+                  {/* Light theme chart */}
                   <img 
-                    src="/hero-illustration.svg" 
-                    alt="Business dashboard showing booking calendar and sales pipeline" 
-                    className="w-full h-auto dark:opacity-90 dark:brightness-95 transition-all duration-300"
+                    src="/success-chart.svg" 
+                    alt="Revenue growth chart - Demo data showing business success" 
+                    className="w-full h-auto dark:hidden transition-all duration-300"
                     loading="eager"
-                    width={800}
-                    height={600}
+                    width={600}
+                    height={400}
+                  />
+                  {/* Dark theme chart */}
+                  <img 
+                    src="/success-chart-dark.svg" 
+                    alt="Revenue growth chart - Demo data showing business success" 
+                    className="w-full h-auto hidden dark:block transition-all duration-300"
+                    loading="eager"
+                    width={600}
+                    height={400}
                   />
                 </div>
                 
                 {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 dark:bg-blue-400 rounded-full opacity-20 blur-2xl animate-pulse" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500 dark:bg-purple-400 rounded-full opacity-20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-green-500 dark:bg-green-400 rounded-full opacity-20 blur-2xl animate-pulse" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500 dark:bg-blue-400 rounded-full opacity-20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
               </div>
             </AnimatedSection>
           </div>
