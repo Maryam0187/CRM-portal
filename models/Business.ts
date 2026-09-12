@@ -30,6 +30,8 @@ interface BusinessAttributes {
   email?: string;
   currency: string;
   plan: string;
+  planStatus: string;
+  planBillingCycle?: string;
   enableBookings: boolean;
   enableSales: boolean;
   createdAt?: Date;
@@ -50,6 +52,8 @@ class Business extends Model<BusinessAttributes, BusinessCreationAttributes>
   public email?: string;
   public currency!: string;
   public plan!: string;
+  public planStatus!: string;
+  public planBillingCycle?: string;
   public enableBookings!: boolean;
   public enableSales!: boolean;
   public readonly createdAt!: Date;
@@ -101,6 +105,15 @@ Business.init(
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: 'free',
+    },
+    planStatus: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      defaultValue: 'active',
+    },
+    planBillingCycle: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
     },
     enableBookings: {
       type: DataTypes.BOOLEAN,

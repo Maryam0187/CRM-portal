@@ -27,6 +27,14 @@ Manage your entire sales operation **without a booking site** (optional for thos
 
 **Perfect for:** B2B sales teams, agencies, consultancies, freelancers, professional services who don't need a booking site.
 
+### 💳 Pricing & Plans
+Three pricing tiers to fit your needs:
+- **Free:** Perfect for getting started (1 site, 5 services, 50 bookings/month)
+- **Growth ($29/mo):** For growing businesses (unlimited bookings, full Sales CRM, 5 team seats)
+- **Business ($99/mo):** For teams & scale (unlimited everything, advanced analytics, dedicated support)
+
+**Payment Flow Mockup:** Complete checkout and billing management UI (demo mode - no real charges). Ready for Stripe integration - just add `STRIPE_SECRET_KEY`.
+
 ### ⚡ Use Both Together
 Accept orders from your website **and** manage B2B sales pipelines in one platform. Bookings can feed into your sales workflow when both modules are enabled.
 
@@ -76,6 +84,11 @@ npx sequelize-cli db:migrate
 
 # 6. Seed demo data
 npx sequelize-cli db:seed:all
+
+# 7. Optional: For Stripe integration (payment mockup works without it)
+# Add to .env:
+# STRIPE_SECRET_KEY=sk_test_your_key_here
+# STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
 
 # 7. Start development server
 npm run dev

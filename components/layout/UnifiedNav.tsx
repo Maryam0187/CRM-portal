@@ -100,8 +100,14 @@ export default function UnifiedNav() {
               <Link href="/dashboard" className={`text-sm ${pathname === '/dashboard' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>
                 Dashboard
               </Link>
-              <Link href="/book-settings" className={`text-sm ${pathname === '/book-settings' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>
-                Services & Hours
+              <Link href="/dashboard/services" className={`text-sm ${pathname === '/dashboard/services' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>
+                Services
+              </Link>
+              <Link href="/dashboard/settings" className={`text-sm ${pathname === '/dashboard/settings' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>
+                Settings
+              </Link>
+              <Link href="/dashboard/billing" className={`text-sm ${pathname === '/dashboard/billing' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>
+                Billing
               </Link>
             </div>
           </div>

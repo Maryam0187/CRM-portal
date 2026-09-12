@@ -51,6 +51,7 @@ export async function POST(req: NextRequest) {
       location: 'Global',
       currency: 'USD',
       plan: plan || 'free',
+      planStatus: 'active',
       enableBookings,
       enableSales,
     });

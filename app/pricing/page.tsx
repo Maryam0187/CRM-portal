@@ -173,7 +173,7 @@ export default function PricingPage() {
               </div>
 
               <Link
-                href={`/signup?plan=${plan.slug}`}
+                href={plan.slug === 'free' ? '/signup?plan=free' : `/checkout?plan=${plan.slug}`}
                 className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all mb-8 ${
                   plan.highlighted
                     ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl'
