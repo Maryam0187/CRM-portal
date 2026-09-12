@@ -268,26 +268,45 @@ function HomePageContent() {
             </div>
           </AnimatedSection>
 
-          {/* Sales-Only Option (Secondary) */}
+          {/* Sales-Only Option (Secondary but Prominent) */}
           <AnimatedSection delay={200}>
-            <div className="p-8 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300">
-              <div className="max-w-3xl mx-auto text-center">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  Need sales tools only?
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  If you don't need a booking site and only want our sales management tools (pipeline, leads, contacts, tasks), 
-                  you can use <span className="font-medium text-gray-900 dark:text-white">Sales Management standalone</span>.
-                </p>
-                <Link 
-                  href="/signup" 
-                  className="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  Learn about sales-only mode
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-purple-600/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <div className="relative p-8 md:p-10 bg-white dark:bg-gray-800 rounded-2xl border-2 border-purple-300 dark:border-purple-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="max-w-3xl mx-auto">
+                  <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
+                        💼
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                        Need sales tools only?
+                        <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs font-semibold rounded-full">
+                          OPTIONAL
+                        </span>
+                      </h4>
+                      <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                        If you don't need a booking site and only want our sales management tools 
+                        <span className="font-semibold text-gray-900 dark:text-white"> (pipeline, leads, contacts, tasks)</span>, 
+                        you can use <span className="font-bold text-purple-600 dark:text-purple-400">Sales Management standalone</span>.
+                      </p>
+                      <Link 
+                        href="/signup" 
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
+                      >
+                        Learn about sales-only mode
+                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </AnimatedSection>
