@@ -42,7 +42,7 @@ export default function LoginPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-4">
-            <img src="/businessos-logo.svg" alt="Business OS" className="h-10 mx-auto" />
+            <img src="/businessos-logo-light.svg" alt="Business OS" className="h-10 mx-auto" />
           </Link>
           <a 
             href="https://technonaire.com/" 

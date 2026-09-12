@@ -49,13 +49,13 @@
   
   <!-- Text: TECHNONAIRE -->
   <text x="90" y="35" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" 
-        font-size="13" font-weight="600" letter-spacing="2" fill="#9ca3af">
+        font-size="13" font-weight="600" letter-spacing="2" fill="#6b7280">
     TECHNONAIRE
   </text>
   
-  <!-- Text: Business (serif, white) -->
+  <!-- Text: Business (serif, dark) -->
   <text x="90" y="58" font-family="Georgia, 'Times New Roman', serif" 
-        font-size="28" font-weight="400" fill="#f3f4f6" font-style="normal">
+        font-size="28" font-weight="400" fill="#1f2937" font-style="normal">
     Business<tspan fill="#d97706" font-weight="500">OS</tspan>
   </text>
   

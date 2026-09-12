@@ -15,17 +15,23 @@ function HomePageContent() {
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2 transition-colors">
-              <img src="/businessos-logo.svg" alt="Business OS" className="h-8 dark:invert" />
-            </Link>
-            <a 
-              href="https://technonaire.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              by Technonaire
-            </a>
+            <div className="flex items-center gap-3">
+              <Link href="/" className="flex items-center transition-colors">
+                <img 
+                  src={theme === 'dark' ? '/businessos-logo.svg' : '/businessos-logo-light.svg'} 
+                  alt="Business OS" 
+                  className="h-8 transition-opacity duration-300" 
+                />
+              </Link>
+              <a 
+                href="https://technonaire.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                by Technonaire
+              </a>
+            </div>
             <div className="flex items-center gap-4">
               <button
                 onClick={toggleTheme}
