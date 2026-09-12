@@ -381,50 +381,181 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Testimonials - Placeholder Examples */}
       <AnimatedSection>
-        <section className="py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-white relative overflow-hidden transition-colors duration-300">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        <section className="py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight transition-colors">
+                Built for people like you
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 transition-colors">
+                Example stories from business owners (placeholder testimonials)
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  quote: "I launched my salon booking page in under a minute. Now I'm taking appointments 24/7 without lifting a finger.",
+                  role: "Salon owner",
+                  icon: "💇‍♀️"
+                },
+                {
+                  quote: "My cleaning business was all phone calls and WhatsApp chaos. Now everything's organized and I've doubled my bookings.",
+                  role: "Cleaning service owner",
+                  icon: "🧹"
+                },
+                {
+                  quote: "I teach yoga online. Setting this up was easier than creating a social media post, and now students can book directly.",
+                  role: "Yoga instructor",
+                  icon: "🧘"
+                }
+              ].map((testimonial, i) => (
+                <AnimatedSection key={i} delay={i * 100}>
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <div className="text-4xl mb-4">{testimonial.icon}</div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed italic">
+                      "{testimonial.quote}"
+                    </p>
+                    <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                      — {testimonial.role}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-xs text-gray-500 dark:text-gray-500 italic">
+                Placeholder testimonials for demonstration purposes
+              </p>
+            </div>
           </div>
-          
-          <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
-              Ready to start your business?
+        </section>
+      </AnimatedSection>
+
+      {/* Overcome Objections */}
+      <AnimatedSection>
+        <section className="py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight transition-colors">
+                You don't need a developer
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 transition-colors">
+                Seriously. If you can describe your business, you can launch it.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  concern: "I'm not technical",
+                  answer: "Perfect. We built this for you. Just tell us what you do—we handle the rest.",
+                  icon: "💪"
+                },
+                {
+                  concern: "I don't have time to set up software",
+                  answer: "60 seconds. That's it. Faster than making coffee.",
+                  icon: "⚡"
+                },
+                {
+                  concern: "What if I need changes later?",
+                  answer: "Change anything, anytime. Your services, prices, hours—it's all flexible.",
+                  icon: "🔄"
+                },
+                {
+                  concern: "Is this really free?",
+                  answer: "Yes. Free to start. No credit card. No surprise charges. You only pay if you want advanced features later.",
+                  icon: "💚"
+                }
+              ].map((item, i) => (
+                <AnimatedSection key={i} delay={i * 100}>
+                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 border border-blue-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+                    <div className="text-3xl mb-4">{item.icon}</div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                      "{item.concern}"
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="mt-16 text-center">
+              <Link 
+                href="/signup"
+                className="group inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg hover:scale-105 transition-all duration-200 shadow-xl shadow-blue-600/25 hover:shadow-2xl shadow-blue-600/40"
+              >
+                Start your business now
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Final CTA - Pep Talk */}
+      <AnimatedSection>
+        <section className="py-32 lg:py-40 relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+          <ParallaxHero />
+          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
+              Your business is waiting.
+              <br />
+              Start it right now.
             </h2>
-            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-              Join thousands of entrepreneurs who launched with BusinessOS.
-              No credit card required. Cancel anytime.
+            <p className="text-2xl text-white/90 mb-6 font-medium">
+              Every successful business had a first day.
+            </p>
+            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+              You've got the idea. You've got the skills. All you need is a way to take orders and get paid. 
+              That's exactly what <strong>My Business</strong> gives you—in 60 seconds.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Link 
-                href="/signup" 
-                className="group px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-2xl hover:shadow-white/20 hover:scale-110 inline-flex items-center justify-center"
+                href="/signup"
+                className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-blue-600 text-xl font-bold rounded-lg hover:scale-105 transition-all duration-200 shadow-2xl hover:shadow-3xl"
               >
                 Get started free
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link 
-                href="/login" 
-                className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-200 inline-flex items-center justify-center hover:scale-105"
+                href="/login"
+                className="inline-flex items-center gap-2 px-8 py-5 bg-white/10 backdrop-blur-sm text-white text-lg font-semibold rounded-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-200"
               >
-                View demo
+                See demo
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-8 text-sm text-gray-400">
-              {['Free forever', 'No setup fees', 'Cancel anytime'].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 hover:scale-110 transition-transform duration-200">
-                  <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  {item}
-                </div>
-              ))}
+            <div className="flex flex-wrap justify-center gap-6 text-white/90">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">Free forever plan</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">No credit card</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">Live in 60 seconds</span>
+              </div>
             </div>
           </div>
         </section>
