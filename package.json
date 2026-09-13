@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Maryam0187/CRM-portal#readme",
   "dependencies": {
+    "@stripe/stripe-js": "^9.16.0",
     "bcryptjs": "^2.4.3",
     "cookie": "^1.0.2",
     "dotenv": "^16.4.7",
@@ -40,6 +41,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sequelize": "^6.37.5",
+    "stripe": "^22.6.2",
     "typescript": "^5.7.3"
   },
   "devDependencies": {

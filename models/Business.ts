@@ -32,6 +32,8 @@ interface BusinessAttributes {
   plan: string;
   planStatus: string;
   planBillingCycle?: string;
+  stripeCustomerId?: string;
+  stripeSubscriptionId?: string;
   enableBookings: boolean;
   enableSales: boolean;
   createdAt?: Date;
@@ -54,6 +56,8 @@ class Business extends Model<BusinessAttributes, BusinessCreationAttributes>
   public plan!: string;
   public planStatus!: string;
   public planBillingCycle?: string;
+  public stripeCustomerId?: string;
+  public stripeSubscriptionId?: string;
   public enableBookings!: boolean;
   public enableSales!: boolean;
   public readonly createdAt!: Date;
@@ -113,6 +117,14 @@ Business.init(
     },
     planBillingCycle: {
       type: DataTypes.STRING(20),
+      allowNull: true,
+    },
+    stripeCustomerId: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    stripeSubscriptionId: {
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
     enableBookings: {

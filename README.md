@@ -85,10 +85,9 @@ npx sequelize-cli db:migrate
 # 6. Seed demo data
 npx sequelize-cli db:seed:all
 
-# 7. Optional: For Stripe integration (payment mockup works without it)
-# Add to .env:
-# STRIPE_SECRET_KEY=sk_test_your_key_here
-# STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+# 7. Configure Stripe (for real payments - see Stripe Setup below)
+cp .env.example .env.local
+# Edit .env.local and add your Stripe test keys
 
 # 7. Start development server
 npm run dev
@@ -121,16 +120,111 @@ Both accounts have:
    - My Business (recommended - includes sales tools)
    - Sales Management only
    - Both modules
-3. **Set up (if using My Business module):**
+3. **Choose your plan:**
+   - Free: Start immediately
+   - Growth/Business: Go through checkout mockup (test mode - no real charges)
+4. **Set up (if using My Business module):**
    - Complete the 2-minute onboarding wizard
    - Choose your business category
    - Add services and pricing
    - Set working hours
    - Your booking page is live!
-4. **Start working:**
+5. **Start working:**
    - My Business users: share your public page, accept orders
    - Sales users: start adding leads and deals
    - Both: switch between modules using the top navigation
+
+### Stripe Setup (Real Payments with Test Mode)
+
+Business OS uses **Stripe Checkout** for subscription payments. Follow these steps to enable:
+
+#### 1. Get Stripe Test Keys
+1. Sign up at [stripe.com](https://stripe.com) (or log in)
+2. Toggle to **Test Mode** (top right)
+3. Go to **Developers → API keys**
+4. Copy your:
+   - Secret key (sk_test_...)
+   - Publishable key (pk_test_...)
+
+#### 2. Create Products & Prices in Stripe
+**Option A: Via Stripe Dashboard (Recommended)**
+1. Go to **Products** → **Add Product**
+2. Create two products:
+   - **Growth Plan**: $29/month and $290/year
+   - **Business Plan**: $99/month and $990/year
+3. Set as **Recurring** subscriptions
+4. Copy the Price IDs (price_xxx) for each
+
+**Option B: Via Stripe CLI** (advanced)
+```bash
+stripe products create --name "Growth Plan" --description "For growing businesses"
+stripe prices create --product <product_id> --currency usd --recurring-interval month --unit-amount 2900
+stripe prices create --product <product_id> --currency usd --recurring-interval year --unit-amount 29000
+# Repeat for Business Plan
+```
+
+#### 3. Configure Environment Variables
+Add to `.env.local` (never commit this file):
+```bash
+STRIPE_SECRET_KEY=sk_test_your_key_here
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# Price IDs from step 2
+STRIPE_PRICE_GROWTH_MONTHLY=price_xxx
+STRIPE_PRICE_GROWTH_ANNUAL=price_xxx
+STRIPE_PRICE_BUSINESS_MONTHLY=price_xxx
+STRIPE_PRICE_BUSINESS_ANNUAL=price_xxx
+```
+
+#### 4. Set Up Webhooks (Local Development)
+Install Stripe CLI:
+```bash
+# macOS
+brew install stripe/stripe-cli/stripe
+
+# Other platforms: https://stripe.com/docs/stripe-cli
+```
+
+Forward webhooks to your local server:
+```bash
+stripe listen --forward-to localhost:3000/api/stripe/webhook
+```
+
+Copy the webhook signing secret (whsec_...) to your `.env.local` as `STRIPE_WEBHOOK_SECRET`.
+
+#### 5. Test the Flow
+1. Restart your dev server (`npm run dev`)
+2. Visit `/pricing` and select Growth or Business
+3. Click "Start [Plan]" → redirects to Stripe Checkout
+4. Use test card: **4242 4242 4242 4242**
+   - Any future expiry (e.g., 12/34)
+   - Any CVC (e.g., 123)
+5. Complete checkout → redirected back with success message
+6. Visit `/dashboard/billing` to:
+   - See active subscription
+   - Click "Manage Subscription" → Stripe Customer Portal
+   - Update payment method or cancel subscription
+
+#### Webhook Events Handled
+- `checkout.session.completed` → Activates plan
+- `customer.subscription.updated` → Updates plan status
+- `customer.subscription.deleted` → Reverts to Free plan
+- `invoice.payment_failed` → Marks account as past_due
+
+#### Test Cards
+- **Success**: 4242 4242 4242 4242
+- **Decline**: 4000 0000 0000 0002
+- **3D Secure**: 4000 0025 0000 3155
+- More: [stripe.com/docs/testing](https://stripe.com/docs/testing)
+
+#### Production Deployment
+1. Switch to **Live Mode** in Stripe Dashboard
+2. Get live API keys (sk_live_... / pk_live_...)
+3. Create products/prices in live mode
+4. Set up webhook endpoint: `https://yourdomain.com/api/stripe/webhook`
+5. Update environment variables with live keys
+6. Deploy!
 
 ### Navigation
 

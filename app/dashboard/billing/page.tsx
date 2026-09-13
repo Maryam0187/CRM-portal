@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import UnifiedNav from '@/components/layout/UnifiedNav';
 
 interface BusinessBilling {
@@ -26,9 +27,12 @@ const PLAN_DETAILS = {
   business: { name: 'Business', monthlyPrice: 99, annualPrice: 990, features: ['Unlimited everything', 'Advanced analytics', 'API access', 'Dedicated manager', 'SLA guarantee'] },
 };
 
-export default function BillingPage() {
+function BillingContent() {
+  const searchParams = useSearchParams();
   const [business, setBusiness] = useState<BusinessBilling | null>(null);
   const [loading, setLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [portalLoading, setPortalLoading] = useState(false);
 
   // Mock invoice history
   const invoices: Invoice[] = [
@@ -39,7 +43,14 @@ export default function BillingPage() {
 
   useEffect(() => {
     fetchBillingInfo();
-  }, []);
+    
+    // Check for success message from Stripe
+    if (searchParams.get('success') === 'true') {
+      setSuccessMessage('Payment successful! Your plan has been activated.');
+      // Clear the success param after showing message
+      setTimeout(() => setSuccessMessage(''), 5000);
+    }
+  }, [searchParams]);
 
   const fetchBillingInfo = async () => {
     try {
@@ -58,12 +69,43 @@ export default function BillingPage() {
   const currentPlan = business?.plan || 'free';
   const planDetails = PLAN_DETAILS[currentPlan as keyof typeof PLAN_DETAILS];
 
+  const handleManageSubscription = async () => {
+    setPortalLoading(true);
+    try {
+      const res = await fetch('/api/stripe/portal', {
+        method: 'POST',
+      });
+      
+      const data = await res.json();
+      if (res.ok && data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Failed to open billing portal');
+        setPortalLoading(false);
+      }
+    } catch (err) {
+      alert('Failed to open billing portal');
+      setPortalLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <UnifiedNav />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-gray-900">Billing & Subscription</h1>
         <p className="text-gray-600 mt-2">Manage your plan, payment method, and invoices</p>
+
+        {successMessage && (
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-6">
+            <div className="flex items-center gap-3">
+              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="font-medium text-green-800">{successMessage}</span>
+            </div>
+          </div>
+        )}
 
         {loading ? (
           <div className="mt-8 text-center text-gray-600">Loading billing information...</div>
@@ -112,8 +154,21 @@ export default function BillingPage() {
                     </>
                   )}
                   {currentPlan === 'business' && (
-                    <button className="px-6 py-2 border-2 border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">
-                      Manage Plan
+                    <button 
+                      onClick={handleManageSubscription}
+                      disabled={portalLoading}
+                      className="px-6 py-2 border-2 border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
+                    >
+                      {portalLoading ? 'Loading...' : 'Manage Subscription'}
+                    </button>
+                  )}
+                  {currentPlan !== 'free' && (
+                    <button 
+                      onClick={handleManageSubscription}
+                      disabled={portalLoading}
+                      className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors disabled:opacity-50"
+                    >
+                      {portalLoading ? 'Loading...' : 'Update Payment Method'}
                     </button>
                   )}
                 </div>
@@ -222,8 +277,12 @@ export default function BillingPage() {
                   )}
                 </div>
                 {currentPlan !== 'free' && (
-                  <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 text-sm transition-colors">
-                    Update Card
+                  <button 
+                    onClick={handleManageSubscription}
+                    disabled={portalLoading}
+                    className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 text-sm transition-colors disabled:opacity-50"
+                  >
+                    {portalLoading ? 'Loading...' : 'Manage Payment'}
                   </button>
                 )}
               </div>
@@ -276,16 +335,16 @@ export default function BillingPage() {
               )}
             </div>
 
-            {/* Demo Notice */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            {/* Stripe Status Notice */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1 a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <div className="font-semibold text-yellow-800 text-sm">Demo Mode - Test Environment</div>
-                  <div className="text-sm text-yellow-700 mt-1">
-                    This is a payment flow mockup. No real charges occur. Ready for Stripe integration (STRIPE_SECRET_KEY).
+                  <div className="font-semibold text-blue-800 text-sm">Stripe Test Mode Active</div>
+                  <div className="text-sm text-blue-700 mt-1">
+                    Using Stripe test environment. Use test card 4242 4242 4242 4242 for payments. Real charges will only occur with live Stripe keys.
                   </div>
                 </div>
               </div>
@@ -294,5 +353,20 @@ export default function BillingPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function BillingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50">
+        <UnifiedNav />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center text-gray-600">Loading billing information...</div>
+        </div>
+      </div>
+    }>
+      <BillingContent />
+    </Suspense>
   );
 }
